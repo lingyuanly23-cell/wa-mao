@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffdf0;
+  --foreground: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-wamao-red: #ff6b6b;
+  --color-wamao-blue: #4ecdc4;
+  --color-wamao-orange: #ff9f43;
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Arial Rounded MT Bold", sans-serif;
+  --font-serif: "Noto Serif SC", STZhongsong, "Source Han Serif SC", "Microsoft YaHei", serif;
+  --font-handwriting: "Comic Sans MS", "Chalkboard SE", "Comic Neue", "Marker Felt", cursive, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
