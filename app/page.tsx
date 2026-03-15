@@ -949,7 +949,7 @@ const EpilogueSpectacle = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row relative">
 
         {/* Left: Sticky Media Column */}
-        <div className="md:w-1/2 md:sticky md:top-0 h-[50vh] md:h-screen flex items-center justify-center p-8">
+        <div className="w-full md:w-1/2 sticky top-0 h-[50vh] md:h-screen flex items-center justify-center p-6 md:p-8 z-10 bg-[#FAFAFA]">
           <div className="w-full aspect-square rounded-2xl shadow-2xl overflow-hidden relative bg-gray-200">
             {narrativeData.map((item, idx) => (
               <div
@@ -963,12 +963,12 @@ const EpilogueSpectacle = () => {
         </div>
 
         {/* Right: Scrolling Text Column */}
-        <div className="md:w-1/2 flex flex-col">
+        <div className="w-full md:w-1/2 flex flex-col relative z-20">
           {narrativeData.map((item, idx) => (
             <div
               key={`text-${idx}`}
               ref={(el) => addToBlocks(el, idx)}
-              className={`min-h-screen flex flex-col justify-center px-4 md:px-16 ${idx === narrativeData.length - 1 ? "pb-[50vh]" : ""}`}
+              className={`min-h-[55vh] md:min-h-screen flex flex-col justify-start md:justify-center px-6 md:px-16 pt-12 md:pt-0 ${idx === narrativeData.length - 1 ? "pb-[50vh]" : ""}`}
             >
               <h3 className="font-serif text-4xl md:text-5xl mb-6 text-[#1a1a1a] leading-tight">
                 {item.title}
