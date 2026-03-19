@@ -219,6 +219,91 @@ export default function Home() {
           </div>
         </div>    </main>
 
+      {/* Project Archive — Warm Indie Magazine Style */}
+      <div className="min-h-screen w-full bg-[#FAF8F4] text-[#3A3330] relative overflow-hidden flex items-center">
+
+        {/* Artisanal paper texture background */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="/paper-texture.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover opacity-[0.07]"
+          />
+        </div>
+
+        {/* Content Grid */}
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10 py-24 md:py-0">
+
+          {/* Left: Project Intro — 6 columns */}
+          <div className="md:col-span-6 flex flex-col justify-center">
+            <span className="text-xs tracking-[0.25em] text-[#C05640] mb-6 font-sans uppercase font-semibold">
+              [ PROJECT ARCHIVE ]
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#221E1C] mb-8 leading-[1.15] font-bold">
+              A digital ethnography of clay, fire, and memory.
+            </h2>
+            <p className="text-lg font-sans text-[#5A514D] leading-relaxed max-w-xl">
+              This project is an independent digital archive dedicated to the Yunnan &lsquo;Wamao&rsquo; (瓦猫). It traces the 600-year evolution of a fierce, roof-guarding beast born from Ming Dynasty military settlements, down to its current iteration as a docile, mass-produced desk toy. The goal is not merely to showcase a traditional craft, but to deconstruct how cultural totems survive, mutate, and are ultimately consumed by the modern spectacle.
+            </p>
+          </div>
+
+          {/* Right: The Journey Outline — 5 columns, offset 1 */}
+          <div className="md:col-span-5 md:col-start-8 flex flex-col justify-center space-y-0 mt-12 md:mt-0">
+
+            {/* ACT I */}
+            <div className="group cursor-pointer border-b border-[#E8E2D9] py-6">
+              <div className="transform transition-all duration-300 ease-out group-hover:scale-105 group-hover:translate-x-2 origin-left">
+                <span className="font-sans font-semibold text-lg text-[#3A3330] group-hover:text-[#C05640] transition-colors duration-300">
+                  ACT I: The Illusion
+                </span>
+              </div>
+              <p className="text-sm font-sans text-[#8A817C] mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                The modern misunderstanding of a cute desk ornament.
+              </p>
+            </div>
+
+            {/* ACT II */}
+            <div className="group cursor-pointer border-b border-[#E8E2D9] py-6">
+              <div className="transform transition-all duration-300 ease-out group-hover:scale-105 group-hover:translate-x-2 origin-left">
+                <span className="font-sans font-semibold text-lg text-[#3A3330] group-hover:text-[#C05640] transition-colors duration-300">
+                  ACT II: The Descent
+                </span>
+              </div>
+              <p className="text-sm font-sans text-[#8A817C] mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                Geographical mutation from imperial order to primal roar.
+              </p>
+            </div>
+
+            {/* ACT III */}
+            <div className="group cursor-pointer border-b border-[#E8E2D9] py-6">
+              <div className="transform transition-all duration-300 ease-out group-hover:scale-105 group-hover:translate-x-2 origin-left">
+                <span className="font-sans font-semibold text-lg text-[#3A3330] group-hover:text-[#C05640] transition-colors duration-300">
+                  ACT III: The Name Taboo
+                </span>
+              </div>
+              <p className="text-sm font-sans text-[#8A817C] mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                The linguistic magic of calling a tiger a &lsquo;cat&rsquo;.
+              </p>
+            </div>
+
+            {/* ACT IV */}
+            <div className="group cursor-pointer py-6">
+              <div className="transform transition-all duration-300 ease-out group-hover:scale-105 group-hover:translate-x-2 origin-left">
+                <span className="font-sans font-semibold text-lg text-[#3A3330] group-hover:text-[#C05640] transition-colors duration-300">
+                  ACT IV: The Spectacle
+                </span>
+              </div>
+              <p className="text-sm font-sans text-[#8A817C] mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                The final surrender to consumerism.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
       {/* CuteShowcase Section */}
       <section ref={showcaseRef} className="w-full bg-white py-32 px-6 flex flex-col items-center relative z-10 overflow-hidden">
         <div className="mx-auto w-full max-w-6xl flex flex-col items-center">
