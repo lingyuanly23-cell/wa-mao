@@ -22,6 +22,7 @@ export default function Navbar() {
     { name: "ACT I: INQUIRY", href: "/inquiry" },
     { name: "ACT II: DESCENT", href: "/descent" },
     { name: "ACT III: TABOO", href: "/taboo" },
+    { name: "ABOUT", href: "/about" },
   ];
 
   return (
