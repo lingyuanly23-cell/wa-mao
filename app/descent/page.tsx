@@ -25,7 +25,7 @@ const HistoryScrollTransition = () => {
     let ctx = gsap.context(() => {
       // 1. Background color transition to warm paper color for the entire section
       gsap.to(containerRef.current, {
-        backgroundColor: "#FDFBF7",
+        backgroundColor: "#F7F6F4",
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -126,7 +126,7 @@ const HistoryScrollTransition = () => {
                 {/* 右侧：文本内容 */}
                 <div className="w-full flex justify-start md:pl-16 relative">
                   {/* 中央的时间线节点（小锚点）- Hidden on mobile, absolutely positioned to align with the center line */}
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#FDFBF7] border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20" />
+                  <div className="hidden md:block absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F7F6F4] border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20" />
 
                   <div className="flex flex-col max-w-lg">
                     <h3 className="text-[#ff9f43] font-handwriting text-3xl md:text-5xl mb-6 leading-tight">
@@ -230,7 +230,7 @@ const CraftHorizontalScroll = () => {
         {craftSteps.map((step, index) => (
           <div
             key={`craft-card-${index}`}
-            className={`sticky ${step.topClass} ${step.zIndex} w-full min-h-[85vh] bg-[#FDFBF7] rounded-3xl shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-col md:flex-row items-center justify-center p-8 md:p-16 ${index === craftSteps.length - 1 ? 'mb-0' : 'mb-[50vh]'} overflow-hidden`}
+            className={`sticky ${step.topClass} ${step.zIndex} w-full min-h-[85vh] bg-[#F7F6F4] rounded-3xl shadow-[0_-15px_40px_-15px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-col md:flex-row items-center justify-center p-8 md:p-16 ${index === craftSteps.length - 1 ? 'mb-0' : 'mb-[50vh]'} overflow-hidden`}
           >
             {/* Giant background number watermark */}
             <div className="absolute top-1/2 right-12 md:right-24 -translate-y-1/2 text-[15rem] md:text-[30rem] font-serif font-black text-black opacity-[0.03] pointer-events-none z-0">

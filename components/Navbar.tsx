@@ -19,14 +19,14 @@ export default function Navbar() {
 
   const links = [
     { name: "INTRODUCTION", href: "/" },
+    { name: "ACT I: INQUIRY", href: "/inquiry" },
     { name: "ACT II: DESCENT", href: "/descent" },
     { name: "ACT III: TABOO", href: "/taboo" },
-    { name: "ACT IV: SPECTACLE", href: "/spectacle" },
   ];
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isMobileMenuOpen ? 'bg-transparent border-transparent' : 'bg-[#EAE8E3]/80 backdrop-blur-md border-b border-black/5'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isMobileMenuOpen ? 'bg-transparent border-transparent' : 'bg-[#F0EFEC]/80 backdrop-blur-md border-b border-black/5'}`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-50">
           <Link 
             href="/" 
@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Full-Screen Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 z-40 bg-[#EAE8E3] transition-opacity duration-500 flex flex-col items-center justify-center ${
+        className={`fixed inset-0 z-40 bg-[#F0EFEC] transition-opacity duration-500 flex flex-col items-center justify-center ${
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >

@@ -205,9 +205,9 @@ const EvolutionAndArchitecture = () => {
       ref={containerRef}
       className="relative w-full py-32 flex flex-col items-center overflow-hidden"
       style={{
-        backgroundColor: "var(--bg-color, #FDFBF7)",
+        backgroundColor: "var(--bg-color, #F7F6F4)",
         color: "var(--text-base, #1c1c1e)",
-        "--bg-color": "#FDFBF7",
+        "--bg-color": "#F7F6F4",
         "--text-base": "#1c1c1e",
         "--text-muted": "#4b5563",
         "--border-accent": "rgba(0,0,0,0.05)"
@@ -218,8 +218,8 @@ const EvolutionAndArchitecture = () => {
       <div className="w-full max-w-4xl flex flex-col items-center pt-32 px-6">
 
         {/* 图片展示 (平面画) */}
-        <div className="relative w-full max-w-2xl p-4 md:p-6 rounded-sm shadow-[0_0_60px_rgba(255,255,255,0.06)] mb-12 bg-[#FDFBF7]">
-          <div className="aspect-[3/4] md:aspect-square w-full overflow-hidden relative border border-[#e5e7eb] bg-[#FDFBF7]">
+        <div className="relative w-full max-w-2xl p-4 md:p-6 rounded-sm shadow-[0_0_60px_rgba(255,255,255,0.06)] mb-12 bg-[#F7F6F4]">
+          <div className="aspect-[3/4] md:aspect-square w-full overflow-hidden relative border border-[#e5e7eb] bg-[#F7F6F4]">
             <img src="/第四页1.jpg" alt="Zhenzhai Tiger Ancestor" className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-95" />
           </div>
         </div>
