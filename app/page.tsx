@@ -242,18 +242,18 @@ export default function Home() {
           <div className="flex flex-col justify-center">
             
             {/* Act I */}
-            <Link href="/" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
+            <Link href="/inquiry" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left flex justify-between items-center w-full">
                 <div className="w-full">
                   <span className="font-sans font-bold text-2xl text-[#1A1A1A] group-hover:text-[#B84221] transition-colors duration-300 block">
-                    ACT I: The Illusion
+                    ACT I: The Inquiry
                   </span>
                   <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                    The modern misunderstanding of a cute desk ornament.
+                    How a heritage product appeared in a city that never had one.
                   </p>
                 </div>
               </div>
-              
+
               {/* Playful light-cyan illustration */}
               <div className="absolute right-[-1rem] top-1/2 -translate-y-1/2 text-cyan-300 z-0 opacity-40 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-500 w-16 h-16 pointer-events-none mix-blend-multiply">
                  <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -285,19 +285,7 @@ export default function Home() {
                   ACT III: The Name Taboo
                 </span>
                 <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                  The linguistic magic of calling a tiger a 'cat'.
-                </p>
-              </div>
-            </Link>
-
-            {/* Act IV */}
-            <Link href="/spectacle" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
-              <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left">
-                <span className="font-sans font-bold text-2xl text-[#1A1A1A] group-hover:text-[#B84221] transition-colors duration-300 block">
-                  ACT IV: The Spectacle
-                </span>
-                <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                  The final surrender to consumerism.
+                  The linguistic magic of calling a tiger a &apos;cat&apos;.
                 </p>
               </div>
             </Link>
