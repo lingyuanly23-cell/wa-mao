@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Prose from "../components/editorial/Prose";
+import HomeTwoReadings from "../components/editorial/HomeTwoReadings";
+import ChapterBridge from "../components/editorial/ChapterBridge";
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
@@ -13,11 +17,6 @@ export default function Home() {
   const accentRef = useRef<SVGSVGElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-
-  // Showcase refs
-  const showcaseRef = useRef<HTMLElement>(null);
-  const introTextRef = useRef<HTMLParagraphElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -70,7 +69,6 @@ export default function Home() {
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
-        // Start floating safely along with entrance
         delay: 0.5
       });
     }
@@ -84,64 +82,21 @@ export default function Home() {
         ease: "expo.inOut",
         repeat: -1,
         repeatDelay: 0.5,
-        yoyo: true // For a smooth draw and erase effect
+        yoyo: true
       }
     );
-
-    // 5. CuteShowcase Stagger animation
-    if (showcaseRef.current) {
-      if (introTextRef.current) {
-        gsap.fromTo(introTextRef.current,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: showcaseRef.current,
-              start: "top 75%",
-            }
-          }
-        );
-      }
-
-      if (cardsRef.current.length > 0) {
-        gsap.fromTo(cardsRef.current,
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: showcaseRef.current,
-              // Start slightly after the intro text breaches
-              start: "top 60%",
-            }
-          }
-        );
-      }
-    }
   }, []);
-
-  const addToCardsRef = (el: HTMLDivElement | null) => {
-    if (el && !cardsRef.current.includes(el)) {
-      cardsRef.current.push(el);
-    }
-  };
 
   return (
     <>
-      <main className="relative flex flex-col min-h-screen w-full overflow-x-hidden bg-white bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.03)_100%)] z-10">
+      <main className="relative flex flex-col min-h-screen w-full overflow-x-clip bg-[#F0EFEC] z-10">
       <section
         ref={containerRef}
         className="relative flex min-h-screen w-full flex-col bg-transparent"
       >
         {/* Giant Typography Background Watermark */}
-        <div className="absolute top-[10%] left-[-5%] z-0 select-none pointer-events-none opacity-[0.03]">
-          <span className="text-[24rem] md:text-[36rem] font-serif font-black leading-none text-black tracking-tighter mix-blend-multiply">
+        <div className="absolute top-[10%] left-[-5%] z-0 select-none pointer-events-none opacity-[0.04]">
+          <span className="text-[24rem] md:text-[36rem] font-serif font-black leading-none text-[#1C1A17] tracking-tighter mix-blend-multiply">
             1381
           </span>
         </div>
@@ -153,9 +108,9 @@ export default function Home() {
           <div className="flex flex-col items-start justify-center w-full lg:pr-8 xl:pr-24">
             <p
               ref={tagRef}
-              className="text-[#B84221] tracking-[0.2em] text-xs font-bold uppercase mb-8 font-sans"
+              className="text-[#B84221] tracking-[0.22em] text-xs font-bold uppercase mb-8 font-sans"
             >
-              THE year 1381
+              [ THE YEAR 1381 ]
             </p>
 
             <h1
@@ -168,12 +123,20 @@ export default function Home() {
             <div className="relative w-full max-w-xl">
               <p
                 ref={subtitleRef}
-                className="text-xl md:text-2xl font-sans text-gray-600 font-light leading-relaxed"
+                className="font-reading text-[clamp(1.05rem,1.6vw,1.25rem)] text-[#2A2723] leading-[1.75] [text-wrap:pretty]"
               >
-                A secret of power and clay hidden on the eaves in the clouds
+                The Wamao (literally &ldquo;tile cat&rdquo;) is a clay guardian figure placed on the
+                rooftops of traditional houses across Yunnan, southwestern China. Across the province
+                it goes by different names, for example &ldquo;ridge-taming tiger&rdquo; in Heqing,
+                &ldquo;clay cat&rdquo; in Binchuan, &ldquo;unicorn&rdquo; in Jianchuan (Ma Jia, 2022).
+                The word &ldquo;Wamao&rdquo; itself is a central-Yunnan term that academics later
+                adopted as a province-wide label for these mythical-beast figures; it is not a name all
+                the makers themselves use (Ma Jia, 2022). This project traces how that label, and the
+                object it names, became the centerpiece of a heritage industry in a city that never had
+                one.
               </p>
 
-              {/* Hand-drawn underline accent (Extended to point right) */}
+              {/* Hand-drawn underline accent */}
               <svg
                 ref={accentRef}
                 className="absolute -bottom-8 left-0 w-64 h-6 text-[#c05621] opacity-60"
@@ -197,7 +160,7 @@ export default function Home() {
           <div className="flex justify-center w-full mt-16 lg:mt-0 xl:-ml-12 relative z-10">
             <div
               ref={imageContainerRef}
-              className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-black/10 bg-gray-50 border border-gray-100/50"
+              className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-black/10 bg-[#E6E4DF] border border-black/5"
             >
               <img
                 ref={imageRef}
@@ -211,81 +174,86 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 lg:left-16 flex flex-col items-center gap-4 z-20 mix-blend-exclusion text-white">
-          <span className="text-[0.65rem] uppercase tracking-[0.2em] font-sans font-medium mix-blend-difference text-black/40" style={{ writingMode: 'vertical-lr' }}>
+        <div className="absolute bottom-12 left-6 lg:left-16 flex flex-col items-center gap-4 z-20">
+          <span className="text-[0.65rem] uppercase tracking-[0.2em] font-sans font-medium text-black/40" style={{ writingMode: 'vertical-lr' }}>
             Scroll to discover
           </span>
-          <div className="w-[1px] h-16 bg-gray-200 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[#1c1c1e] scroll-line-anim origin-top" />
+          <div className="w-[1px] h-16 bg-black/10 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[#1C1A17] scroll-line-anim origin-top" />
           </div>
         </div>    </section>
 
 
       {/* Project Archive Section */}
-      <div className="w-full text-[#1A1A1A] relative overflow-hidden flex items-center pt-40 pb-20 z-10">
+      <div className="w-full text-[#1C1A17] relative overflow-hidden flex items-center pt-40 pb-20 z-10">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-[55%_45%] gap-20 relative z-10">
-          
+
           {/* Left: Project Abstract */}
-          <div className="flex flex-col justify-center lg:pr-12">
-            <span className="text-[#B84221] tracking-[0.2em] text-xs font-bold uppercase mb-8 font-sans">
+          <div className="flex flex-col justify-start lg:pr-12">
+            <span className="text-[#B84221] tracking-[0.22em] text-xs font-bold uppercase mb-8 font-sans">
               [ PROJECT ARCHIVE ]
             </span>
-            <h2 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold mb-10">
+            <h2 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold mb-12">
               A digital ethnography of clay, fire, and memory.
             </h2>
-            <p className="text-xl font-sans text-[#4A4A4A] leading-relaxed max-w-2xl font-light">
-              This project is an independent digital archive dedicated to the Yunnan 'Wamao' (瓦猫). It traces the 600-year evolution of a fierce, roof-guarding beast born from Ming Dynasty military settlements, down to its current iteration as a docile, mass-produced desk toy. The goal is not merely to showcase a traditional craft, but to deconstruct how cultural totems survive, mutate, and are ultimately consumed by the modern spectacle.
-            </p>
+
+            <Prose dropcap>
+              <p>
+                This project is an independent research archive dedicated to the Yunnan Wamao. It
+                documents a cultural object whose origins remain debated among scholars. This project
+                traces its recent history, documenting the evolution of Wamao from &hellip; onwards.
+                Since 2013, the city of Yuxi has transformed this figure from a little-known folk item
+                into a branded cultural product marketed under the banner of &ldquo;Intangible Cultural
+                Heritage&rdquo;, a provincial-level designation the Wamao itself only officially
+                received in 2023 (Wang Xinyuan, 2024).
+              </p>
+              <p>
+                Through fieldwork in Yuxi&rsquo;s workshops, digital analysis of China&rsquo;s social
+                media platforms, and engagement with the academic literature on Yunnan&rsquo;s
+                architectural traditions, the goal of this project is to answer a simple question: what
+                is the cultural and social significance of a city adopting, branding, and selling as
+                its own heritage an object it never traditionally possessed?
+              </p>
+            </Prose>
           </div>
 
-          {/* Right: The 4 Acts Overview */}
+          {/* Right: The 3 Acts Overview */}
           <div className="flex flex-col justify-center">
-            
+
             {/* Act I */}
-            <Link href="/inquiry" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
+            <Link href="/inquiry" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left flex justify-between items-center w-full">
                 <div className="w-full">
-                  <span className="font-sans font-bold text-2xl text-[#1A1A1A] group-hover:text-[#B84221] transition-colors duration-300 block">
+                  <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
                     ACT I: The Inquiry
                   </span>
-                  <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                    How a heritage product appeared in a city that never had one.
+                  <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
+                    Fieldwork in Yuxi: four artisans, two workshops, and a heritage industry built from scratch.
                   </p>
                 </div>
-              </div>
-
-              {/* Playful light-cyan illustration */}
-              <div className="absolute right-[-1rem] top-1/2 -translate-y-1/2 text-cyan-300 z-0 opacity-40 group-hover:opacity-100 group-hover:rotate-12 transition-all duration-500 w-16 h-16 pointer-events-none mix-blend-multiply">
-                 <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                   <path d="M50 10 Q 70 5, 80 20 T 90 40 Q 95 60, 80 80 T 50 90 Q 20 95, 10 80 T 10 40 Q 20 5, 50 10" />
-                   {/* Tiny eyes and mouth */}
-                   <circle cx="35" cy="40" r="4" fill="#1A1A1A" />
-                   <circle cx="65" cy="40" r="4" fill="#1A1A1A" />
-                   <path d="M40 60 Q 50 70, 60 60" stroke="#1A1A1A" strokeWidth="3" fill="none" strokeLinecap="round" />
-                 </svg>
               </div>
             </Link>
 
             {/* Act II */}
-            <Link href="/descent" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
+            <Link href="/descent" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left">
-                <span className="font-sans font-bold text-2xl text-[#1A1A1A] group-hover:text-[#B84221] transition-colors duration-300 block">
-                  ACT II: The Descent
+                <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
+                  ACT II: Historical Background
                 </span>
-                <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                  Geographical mutation from imperial order to primal roar.
+                <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
+                  What scholars have found: the deep history, regional diversity, and ritual life of the Wamao across Yunnan.
                 </p>
               </div>
             </Link>
 
             {/* Act III */}
-            <Link href="/taboo" className="group cursor-pointer border-b border-gray-200/50 py-8 relative w-full block">
+            <Link href="/afterlife" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left">
-                <span className="font-sans font-bold text-2xl text-[#1A1A1A] group-hover:text-[#B84221] transition-colors duration-300 block">
-                  ACT III: The Name Taboo
+                <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
+                  ACT III: The Digital Afterlife
                 </span>
-                <p className="text-base font-sans text-gray-500 mt-2 font-light group-hover:text-gray-700 transition-colors duration-300">
-                  The linguistic magic of calling a tiger a &apos;cat&apos;.
+                <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
+                  How 200 Xiaohongshu posts reveal what happens to a cultural object when it enters the consumer internet.
                 </p>
               </div>
             </Link>
@@ -293,151 +261,134 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       {/* Fieldwork & Methodology Section */}
-      <section className="w-full py-40 relative z-10 bg-white">
+      <section className="w-full py-40 relative z-10 bg-[#F0EFEC]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
-          
+
           {/* Left Column: The Field Photos */}
           <div className="relative h-[500px] w-full max-w-md mx-auto md:max-w-none group cursor-pointer">
-            {/* Image 1 (Originally Background) */}
-            <div className="absolute top-0 right-4 w-3/4 bg-white p-3 pb-10 border border-gray-100 shadow-xl z-10 rotate-3 transition-all duration-500 ease-out group-hover:z-30 group-hover:scale-105 group-hover:-rotate-2 group-hover:-translate-x-4 group-hover:-translate-y-4">
-              <img 
-                src="/第一页4.jpg" 
-                alt="Modern Wamao Display" 
-                className="w-full aspect-[4/3] object-cover bg-gray-200"
+            {/* Image 1 */}
+            <div className="absolute top-0 right-4 w-3/4 bg-white p-3 pb-10 border border-black/5 shadow-xl z-10 rotate-3 transition-all duration-500 ease-out group-hover:z-30 group-hover:scale-105 group-hover:-rotate-2 group-hover:-translate-x-4 group-hover:-translate-y-4">
+              <img
+                src="/第一页4.jpg"
+                alt="Modern Wamao Display"
+                className="w-full aspect-[4/3] object-cover bg-[#E6E4DF]"
               />
             </div>
-            
-            {/* Image 2 (Originally Foreground) */}
-            <div className="absolute bottom-4 left-0 w-2/3 bg-white p-3 pb-10 border border-gray-100 shadow-xl z-20 -rotate-3 transition-all duration-500 ease-out group-hover:z-10 group-hover:scale-95 group-hover:rotate-4 group-hover:translate-x-4 group-hover:translate-y-4">
-              <img 
-                src="/第一页5.jpg" 
-                alt="Artisans at work" 
-                className="w-full aspect-[4/5] object-cover bg-gray-300"
+
+            {/* Image 2 */}
+            <div className="absolute bottom-4 left-0 w-2/3 bg-white p-3 pb-10 border border-black/5 shadow-xl z-20 -rotate-3 transition-all duration-500 ease-out group-hover:z-10 group-hover:scale-95 group-hover:rotate-4 group-hover:translate-x-4 group-hover:translate-y-4">
+              <img
+                src="/第一页5.jpg"
+                alt="Artisans at work"
+                className="w-full aspect-[4/5] object-cover bg-[#E6E4DF]"
               />
             </div>
           </div>
 
           {/* Right Column: The Methodology Text */}
           <div className="flex flex-col justify-center">
-            <span className="text-[#B84221] tracking-[0.2em] text-xs font-bold uppercase mb-6 font-sans">
-              [ THE FIELDWORK ]
+            <span className="text-[#B84221] tracking-[0.22em] text-xs font-bold uppercase mb-6 font-sans">
+              [ FIELDWORK ]
             </span>
-            <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold mb-8">
-              Grounding the myth in reality.
+            <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold mb-10">
+              Fieldwork Experience
             </h2>
-            <p className="text-xl font-sans text-[#4A4A4A] leading-relaxed max-w-xl font-light mb-10">
-              This digital archive is built upon extensive qualitative fieldwork across Yunnan. To understand how a 600-year-old architectural guardian transforms into a modern consumer spectacle, we had to trace the clay from the kiln to the city.
-            </p>
-            <ul className="space-y-5">
-              <li className="flex items-start">
-                <span className="text-[#C84B31] mr-4 mt-1.5 text-lg">•</span>
-                <span className="text-lg font-sans text-[#4A4A4A] font-light leading-relaxed">In-depth interviews with independent artisans and workshop owners.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#C84B31] mr-4 mt-1.5 text-lg">•</span>
-                <span className="text-lg font-sans text-[#4A4A4A] font-light leading-relaxed">Extensive oral history conversations with local residents.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#C84B31] mr-4 mt-1.5 text-lg">•</span>
-                <span className="text-lg font-sans text-[#4A4A4A] font-light leading-relaxed">Consultations and dialogues with municipal city planning and cultural departments.</span>
-              </li>
-            </ul>
+
+            <Prose>
+              <p>
+                This archive is grounded in qualitative fieldwork I conducted in Yuxi, Yunnan Province,
+                from June 16 to June 22, 2025. Over seven days, I interviewed four artisans and
+                workshop personnel across two active ceramic workshops, focusing on how they produce
+                Wamao, how they sell them, and what they think the objects actually mean. I also spent
+                time learning the craft myself: shaping clay alongside the potters, getting a feel for
+                the material and the labor that goes into each figure. Alongside this fieldwork, I
+                collected 200 Xiaohongshu (Little Red Book) posts tagged with &ldquo;Wamao,&rdquo;
+                scraped by keyword, and classified their content to see how this object is spread and
+                understood in China&rsquo;s digital consumer culture.
+              </p>
+              <p>
+                All quotations in this project are drawn from detailed field notes I took during and
+                immediately after semi-structured interviews; they reflect the substance of what was
+                said rather than verbatim transcripts. All interviewees are identified by their real
+                names with their consent.
+              </p>
+            </Prose>
           </div>
 
         </div>
       </section>
 
-      {/* CuteShowcase Section */}
-      <section ref={showcaseRef} className="w-full bg-transparent py-40 px-6 flex flex-col items-center relative z-10 overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl flex flex-col items-center">
-
-          {/* Section Header */}
-          <div className="flex flex-col items-center text-center px-4">
-            <span className="text-[#B84221] tracking-[0.2em] text-xs font-bold uppercase mb-6 font-sans">
-              [ TODAY ]
-            </span>
-            <div className="relative inline-block mb-10">
-              <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold relative z-10">
-                A little monster sitting on urban desks
-              </h2>
-              <svg
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-full max-w-[12rem] h-3 text-[#4ecdc4] opacity-60 -z-10"
-                viewBox="0 0 100 10"
-                fill="none"
-                preserveAspectRatio="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 5 Q 25 2, 50 5 T 100 5" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
-              </svg>
-            </div>
-
-            {/* Identity Intro Text */}
-            <p
-              ref={introTextRef}
-              className="w-full max-w-2xl mx-auto mb-16 text-lg md:text-xl font-serif text-gray-600 text-center leading-relaxed"
-            >
-              As a unique{" "}
-              <span className="relative inline-block px-1">
-                <span className="relative z-10 font-medium text-gray-800">Intangible Cultural Heritage</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-[#ff9f43]/30 -z-10 -rotate-1 rounded-sm"></span>
-              </span>{" "}
-              of Yunnan, Wa Mao was originally a house-guarding beast sitting on ancient{" "}
-              <span className="relative inline-block px-1">
-                <span className="relative z-10 font-medium text-gray-800">eaves</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-[#4ecdc4]/30 -z-10 rotate-1 rounded-sm"></span>
-              </span>{", "}
-              with its giant mouth wide open to swallow evil spirits. But time seems to have smoothed its fangs. Today, it steps down from the high roofs, sheds the rough breath of clay, and transforms into the most adorable, healing blind-box on the desks of urban youth.
-            </p>
-          </div>
-
-          {/* Polaroid Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full">
-
-            {/* Card 1 */}
-            <div
-              ref={addToCardsRef}
-              className="bg-white p-4 pb-8 border border-gray-100 flex flex-col items-center transition-all duration-300 hover:scale-105 hover:rotate-0 -rotate-[3deg] shadow-[6px_6px_0px_#4ecdc4] group cursor-pointer"
-            >
-              <div className="w-full aspect-square bg-gray-100 rounded-md mb-6 overflow-hidden relative">
-                <img src="/第一页2.jpg" alt="Wa Mao polaroid 1" className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-              <p className="font-handwriting text-lg text-gray-700 text-center leading-relaxed px-2">
-                A giant mouth trying to act cute? It's actually to swallow evil spirits~
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div
-              ref={addToCardsRef}
-              className="bg-white p-4 pb-8 border border-gray-100 flex flex-col items-center transition-all duration-300 hover:scale-105 hover:rotate-0 rotate-[2deg] shadow-[6px_6px_0px_#ff9f43] mt-0 md:mt-8 group cursor-pointer"
-            >
-              <div className="w-full aspect-square bg-gray-100 rounded-md mb-6 overflow-hidden relative">
-                <img src="/第一页1.jpg" alt="Wa Mao polaroid 2" className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-              <p className="font-handwriting text-lg text-gray-700 text-center leading-relaxed px-2">
-                A chubby body, dressed in a delicate blue-and-white porcelain coat ✨
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div
-              ref={addToCardsRef}
-              className="bg-white p-4 pb-8 border border-gray-100 flex flex-col items-center transition-all duration-300 hover:scale-105 hover:rotate-0 -rotate-[1deg] shadow-[6px_6px_0px_#ff6b6b] mt-0 md:-mt-4 group cursor-pointer"
-            >
-              <div className="w-full aspect-square bg-gray-100 rounded-md mb-6 overflow-hidden relative">
-                <img src="/第一页3.jpg" alt="Wa Mao polaroid 3" className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-              <p className="font-handwriting text-lg text-gray-700 text-center leading-relaxed px-2">
-                Jumping from the eaves to the desk, it became a healing master meow in a blind box.
-              </p>
-            </div>
-
-          </div>
-
+      {/* TODAY Section */}
+      <section className="w-full bg-[#F0EFEC] pt-40 pb-20 relative z-10 overflow-x-clip">
+        {/* Section Header */}
+        <div className="mx-auto max-w-3xl flex flex-col items-center text-center px-6 mb-20">
+          <span className="text-[#B84221] tracking-[0.22em] text-xs font-bold uppercase mb-6 font-sans">
+            [ TODAY ]
+          </span>
+          <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold">
+            A Quotidian Cultural Totem
+          </h2>
         </div>
+
+        {/* Opening TODAY paragraph (ritual in Heqing & Binchuan) */}
+        <Prose dropcap>
+          <p>
+            The Wamao was once a house-guarding beast perched on ancient eaves, its giant mouth opened
+            wide to swallow evil spirits. In the villages of Heqing and Binchuan, that mouth still
+            carries ritual meaning. A Binchuan geomancer, interviewed by ethnographer Ma Jia in 2021,
+            put it bluntly: a Wamao without a consecration ceremony is nothing more than &ldquo;a lump
+            of clay, with no spiritual power whatsoever.&rdquo; In Heqing, the installation ritual is
+            called &ldquo;sealing the dragon&rsquo;s mouth&rdquo;, and involves selecting an auspicious
+            date, sacrificing a rooster, daubing its blood on the figure&rsquo;s eyes, mouth, and ears,
+            and reciting prayers to unite the five cardinal directions into a single protective force
+            (Ma Jia, 2018; Ma Jia, 2022b). The object on the roof is constructed and understood through
+            this ritual: its protective power is taken to derive not from the clay or the open mouth,
+            but from the act of consecration that binds the figure to a particular house and its
+            occupants.
+          </p>
+        </Prose>
+
+        {/* The approved scroll animation: same object, two readings */}
+        <div className="my-12">
+          <HomeTwoReadings />
+        </div>
+
+        {/* Remaining TODAY paragraphs (Yuxi no ritual; green coin bestseller; ICH 2023 vs 2014) */}
+        <Prose>
+          <p>
+            In Yuxi, the Wamao is not coupled with any such ritual. The consecration that gives the
+            figure its significance in Heqing and Binchuan plays no part in how it is made or sold here,
+            and so it has shed whatever ritual weight it once carried and become something else: a
+            palm-sized desk ornament, a ceramic cup accessory, a blind-box collectible.
+          </p>
+          <p>
+            The bestselling model at one Yuxi workshop is a green figure with a coin lodged in its
+            mouth. The open mouth, which in the older ritual context was meant to swallow and ward off
+            evil spirits, has here been repurposed to attract wealth. If the coin sits inside, the back
+            of the figure is sealed so that money cannot leak out; if the mouth is left empty, a hole is
+            opened at the back to draw fortune in. In neither version does the design retain any
+            reference to spirits or protection. Its logic is organized entirely around the promise of
+            luck, and behind that, around what will sell to tourists.
+          </p>
+          <p>
+            Yunnan Province officially designated the Wamao as a provincial-level Intangible Cultural
+            Heritage item in 2023 (Wang Xinyuan, 2024). But Yuxi had already been marketing it as
+            &ldquo;ICH&rdquo; for nearly a decade before that designation arrived. In 2014, the city
+            secured ICH status for a different ceramic tradition, Yuxi blue-and-white porcelain (Yunnan
+            Gateway, 2020). For the next nine years, the Wamao rode on that credential, bundled into the
+            same &ldquo;ceramics heritage&rdquo; brand even though it had no ICH designation of its own.
+          </p>
+        </Prose>
       </section>
+
+      <ChapterBridge
+        eyebrow="[ BEGIN ]"
+        title="ACT I: The Inquiry"
+        description="Fieldwork in Yuxi: four artisans, two workshops, and a heritage industry built from scratch."
+        href="/inquiry"
+      />
 
       </main>
     </>

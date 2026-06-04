@@ -19,9 +19,9 @@ export default function Navbar() {
 
   const links = [
     { name: "INTRODUCTION", href: "/" },
-    { name: "ACT I: INQUIRY", href: "/inquiry" },
-    { name: "ACT II: DESCENT", href: "/descent" },
-    { name: "ACT III: TABOO", href: "/taboo" },
+    { name: "ACT I: THE INQUIRY", href: "/inquiry" },
+    { name: "ACT II: HISTORICAL BACKGROUND", href: "/descent" },
+    { name: "ACT III: THE DIGITAL AFTERLIFE", href: "/afterlife" },
     { name: "ABOUT", href: "/about" },
   ];
 

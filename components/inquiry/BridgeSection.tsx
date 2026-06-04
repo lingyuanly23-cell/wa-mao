@@ -26,10 +26,11 @@ export default function BridgeSection() {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-serif font-bold text-[#1C1A17] mb-2">
-                  ACT II: THE DESCENT
+                  ACT II: Historical Background
                 </h3>
                 <p className="text-base font-sans text-[#4A4A4A]">
-                  Geographical mutation from imperial order to primal roar.
+                  What scholars have found: the deep history, regional diversity,
+                  and ritual life of the Wamao across Yunnan.
                 </p>
               </div>
               <span className="text-2xl text-[#B84221] transition-transform duration-300 group-hover:translate-x-2 ml-4 shrink-0">

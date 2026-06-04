@@ -13,10 +13,23 @@
   --color-wamao-orange: #ff9f43;
   --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Arial Rounded MT Bold", sans-serif;
   --font-serif: "Noto Serif SC", STZhongsong, "Source Han Serif SC", "Microsoft YaHei", serif;
+  /* English-first reading serif; Noto Serif SC only renders the CJK glyphs */
+  --font-reading: "Source Serif 4", "Noto Serif SC", Georgia, "Times New Roman", serif;
   --font-handwriting: "Comic Sans MS", "Chalkboard SE", "Comic Neue", "Marker Felt", cursive, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Editorial reading system */
+.prose-dropcap > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-reading);
+  font-weight: 800;
+  font-size: 3.5em;
+  line-height: 0.72;
+  margin: 0.06em 0.12em 0 0;
+  color: #1c1a17;
 }

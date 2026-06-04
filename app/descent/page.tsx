@@ -1,18 +1,178 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Link from "next/link";
+import Prose from "@/components/editorial/Prose";
+import ChapterBridge from "@/components/editorial/ChapterBridge";
+
+/** All visible text is verbatim from _v4_extract.txt, Act II (English only). */
+
 export default function DescentPage() {
   return (
-    <main className="flex min-h-screen w-full flex-col pt-20">
+    <main className="flex min-h-screen w-full flex-col bg-[#F0EFEC] pt-20">
+      <ActOpener />
+      <FiveTheories />
       <HistoryScrollTransition />
+      <Migration1381 />
       <CraftHorizontalScroll />
+      <CraftDetail />
+      <ChapterBridge
+        title="ACT III: The Digital Afterlife"
+        description="How 200 Xiaohongshu posts reveal what happens to a cultural object when it enters the consumer internet."
+        href="/afterlife"
+      />
     </main>
   );
 }
+
+/* ───────────────────────────── Opening ───────────────────────────── */
+
+const ActOpener = () => {
+  return (
+    <section className="mx-auto flex min-h-[64vh] max-w-3xl flex-col justify-center px-6 pt-24 pb-12">
+      <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-[#B84221]">
+        Act II · Historical Background
+      </p>
+      <h1 className="mt-5 font-reading text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[1.05] text-[#1C1A17]">
+        A past more complicated<br className="hidden md:block" /> than the label.
+      </h1>
+      <div className="mt-10">
+        <Prose>
+          <p>
+            The Wamao&rsquo;s past is more complicated than the &ldquo;600-year-old
+            heritage&rdquo; label suggests, and less settled than any single origin
+            story would have you believe.
+          </p>
+        </Prose>
+      </div>
+    </section>
+  );
+};
+
+/* ───────────────────── Five Theories (typographic) ───────────────────── */
+
+const THEORIES = [
+  {
+    num: "01",
+    text: (
+      <>
+        a domestic cat protecting grain stores, rooted in Neolithic agricultural
+        settlements (Wang Xinyuan, 2024)
+      </>
+    ),
+  },
+  {
+    num: "02",
+    text: (
+      <>
+        a stand-in for the tiger, linked to Yi and Bai ethnic cosmologies (Yang
+        Zhaolin, 2002)
+      </>
+    ),
+  },
+  {
+    num: "03",
+    text: <>an owl or phoenix from Han-dynasty funerary traditions</>,
+  },
+  {
+    num: "04",
+    text: (
+      <>
+        a composite creature blending features of the chiwen ridge-swallower, the
+        ao fish, the xiezhi, and the jiaoduan, four mythical beasts from the
+        Chinese architectural vocabulary (Cao Anli &amp; Xin Beini, 2025)
+      </>
+    ),
+  },
+  {
+    num: "05",
+    text: (
+      <>
+        or a practical smoke-ventilation device whose spiritual overlay was added
+        later, as evidenced by soot marks found inside door-mounted Wamao in
+        Yiliang County (Wang Xinyuan, 2024)
+      </>
+    ),
+  },
+];
+
+const FiveTheories = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const rows = gsap.utils.toArray<HTMLElement>(".theory-row");
+      rows.forEach((row) => {
+        gsap.fromTo(
+          row,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: { trigger: row, start: "top 85%" },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full border-y border-[#1C1A17]/10 bg-[#F0EFEC] px-6 py-28 md:py-40"
+    >
+      <div className="mx-auto w-full max-w-5xl">
+        <span className="font-sans text-xs font-semibold uppercase tracking-[0.26em] text-[#B84221]">
+          What it might have been
+        </span>
+        <h2 className="mt-6 max-w-4xl font-reading text-[clamp(1.9rem,4.4vw,3.2rem)] font-semibold leading-[1.12] text-[#1C1A17]">
+          Scholars have proposed at least five different theories about what the
+          Wamao originally was:
+        </h2>
+
+        <ol className="mt-16 flex flex-col">
+          {THEORIES.map((t, i) => (
+            <li
+              key={t.num}
+              className={`theory-row grid grid-cols-[auto_1fr] items-baseline gap-x-6 gap-y-2 py-8 md:gap-x-12 ${
+                i === 0 ? "border-t" : ""
+              } border-b border-[#1C1A17]/12`}
+            >
+              <span className="font-reading text-[clamp(2.4rem,7vw,4.5rem)] font-bold leading-none text-[#B84221]">
+                {t.num}
+              </span>
+              <p className="font-reading text-[clamp(1.2rem,2.6vw,1.9rem)] font-medium leading-[1.4] text-[#1C1A17] [text-wrap:pretty]">
+                {t.text}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        <p className="mt-16 max-w-3xl font-reading text-[clamp(1.1rem,2.2vw,1.45rem)] leading-[1.7] text-[#2A2723] [text-wrap:pretty]">
+          There is no consensus, and the name &ldquo;Wamao&rdquo; itself turns out
+          to be a regional label from central Yunnan that scholars adopted as a
+          province-wide term, not a universal folk name (Ma Jia, 2022).
+        </p>
+
+        <p className="mt-10 max-w-3xl font-reading text-[clamp(1.25rem,2.8vw,1.85rem)] font-semibold leading-[1.45] text-[#1C1A17]">
+          What is clear is that the Wamao&rsquo;s history cannot be separated from
+          the history of migration and kiln culture in Yunnan.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+/* ───────────────────── 1381 vertical timeline (kept) ───────────────────── */
 
 const HistoryScrollTransition = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -71,22 +231,22 @@ const HistoryScrollTransition = () => {
   const narrativeData = [
     {
       title: "1381 • The Great Expedition",
-      desc: "The Ming Dynasty dispatched 300,000 troops to the southwest frontier. Imperial power officially extended into the rugged red earth of Yunnan, bringing an end to the chaotic era.",
+      desc: "In 1381, the Ming Dynasty sent 300,000 troops into the southwestern frontier under General Fu Youde.",
       imgSrc: "/第二页4.png"
     },
     {
-      title: "Swords to Plowshares • The 'Jun Tun' System",
-      desc: "To secure the border, soldiers became farmers. Massive military colonies were established across the province, fundamentally transforming the local demographic and economic landscape.",
+      title: "Soldiers Settled as Military Colonists",
+      desc: "Soldiers were settled as military colonists, given land to farm, and expected to hold the border permanently.",
       imgSrc: "/第二页3.png"
     },
     {
-      title: "A Cultural Transplant",
-      desc: "Millions of Han immigrants followed the army. Along with their families, they brought the architectural styles, folk beliefs, and cultural memories of the Central Plains to this foreign land.",
+      title: "Beibanbang • Founded 1382",
+      desc: "In the Heqing region, ethnographic fieldwork has confirmed that the village of Beibanbang, one of the best-documented centers of Wamao production, was founded by Han Chinese military settlers who arrived in 1382 under General Lan Yu (Ma Jia, 2018).",
       imgSrc: "/第二页2.png"
     },
     {
-      title: "Mud and Fire • The Artisans",
-      desc: "Skilled craftsmen from the military built kilns to fire bricks for new courtyard homes. In these very kilns, driven by survival anxiety and cultural memory, the prototype of 'Wamao' was about to be molded.",
+      title: "Courtyard Houses • Roof-Ridge Guardians",
+      desc: "These settlers built courtyard houses modeled on Central Plains architecture, and they brought the practice of placing guardian figures on roof ridges.",
       imgSrc: "/第二页1.png"
     }
   ];
@@ -96,7 +256,7 @@ const HistoryScrollTransition = () => {
 
       {/* 卷轴引言 (Optional header to keep spacing) */}
       <h2 className="text-4xl font-serif text-[#4b5563] text-center z-10 mb-32 px-6 relative">
-        But wait... is this the whole story?
+        1381 — The Great Expedition
       </h2>
 
       {/* 核心容器：长卷轴时间线 */}
@@ -108,8 +268,6 @@ const HistoryScrollTransition = () => {
         {/* 历史节点列表 */}
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10 pb-32">
           {narrativeData.map((data, index) => {
-            // Alternate layout for variety (optional, but strictly adhering to your 'Left Image, Right Text' ask -> keeping them consistent here, 
-            // but usually timelines alternate. I will stick exactly to: Left 50% image, Right 50% text).
             return (
               <div
                 key={`row-${index}`}
@@ -147,6 +305,43 @@ const HistoryScrollTransition = () => {
   );
 }
 
+/* ───────────────── 1381 expository text (Prose columns) ───────────────── */
+
+const Migration1381 = () => {
+  return (
+    <section className="w-full bg-[#F7F6F4] py-24 md:py-32">
+      <Prose>
+        <p>
+          In 1381, the Ming Dynasty sent 300,000 troops into the southwestern
+          frontier under General Fu Youde. Soldiers were settled as military
+          colonists, given land to farm, and expected to hold the border
+          permanently. In the Heqing region, ethnographic fieldwork has confirmed
+          that the village of Beibanbang, one of the best-documented centers of
+          Wamao production, was founded by Han Chinese military settlers who
+          arrived in 1382 under General Lan Yu (Ma Jia, 2018). These settlers built
+          courtyard houses modeled on Central Plains architecture, and they brought
+          the practice of placing guardian figures on roof ridges.
+        </p>
+        <p>
+          The kilns these colonists built to fire bricks for their new homes also
+          fired the earliest Wamao prototypes. The ethnographer Ma Jia has argued
+          that Wamao production is structurally tied to the brick-and-tile
+          industry: &ldquo;Where there are no brick kilns, there are no
+          Wamao&rdquo; (Ma Jia, 2018). The figures were not made by specialist
+          craftsmen. They were side products, shaped from leftover clay by kiln
+          workers as favors for neighbors who were building new houses. In the
+          village of Beibanbang, an elderly worker recalled that in the old days,
+          &ldquo;if you were friends with someone, you&rsquo;d make one for them
+          during your spare time at the kiln, and fire it alongside the regular
+          batch of tiles&rdquo; (Ma Jia, 2018).
+        </p>
+      </Prose>
+    </section>
+  );
+};
+
+/* ───────────────────── Craft horizontal scroll (kept) ───────────────────── */
+
 const CraftHorizontalScroll = () => {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -178,32 +373,32 @@ const CraftHorizontalScroll = () => {
   const craftSteps = [
     {
       num: "01",
-      title: "Gathering the Earth",
-      desc: "Artisans used leftover red or black clay from firing bricks. This cheap, local material gave Wamao its inherent roughness.",
+      title: "Gathering the Earth.",
+      desc: "Artisans use locally sourced red or black clay, the same material used for bricks and roof tiles.",
       topClass: "top-[5vh]",
       zIndex: "z-10",
       imgSrc: "/第三页1.jpg"
     },
     {
       num: "02",
-      title: "Shaping the Body",
-      desc: "Forming the basic torso. This crucial step would later branch into two entirely different techniques across the province.",
+      title: "Shaping the Body.",
+      desc: "In Heqing, the Wamao is entirely hand-molded without molds. In Binchuan, artisans use a different method: carving the figure from a solid clay block.",
       topClass: "top-[10vh]",
       zIndex: "z-20",
       imgSrc: "/第三页2.jpg"
     },
     {
       num: "03",
-      title: "Awakening the Soul",
-      desc: "Using knives and fingers to carve exaggerated eyes and horns. The most vital part: the giant, spirit-devouring maw.",
+      title: "Awakening the Face.",
+      desc: "The face is the hardest part. Using fingers and a few simple tools, the artisan sculpts bulging eyes, flared nostrils, and the defining feature: the wide-open mouth.",
       topClass: "top-[15vh]",
       zIndex: "z-30",
       imgSrc: "/第三页3.jpg"
     },
     {
       num: "04",
-      title: "Trial by Fire",
-      desc: "Fired in low-temperature wood kilns. Extremely prone to weathering, yet this gave it the heavy, historical texture of the earth itself.",
+      title: "Trial by Fire.",
+      desc: "Traditional Wamao are fired in dome-shaped coal kilns known locally as \"black-tile kilns,\" at temperatures between 1,000 and 1,400 degrees Celsius.",
       topClass: "top-[20vh]",
       zIndex: "z-40",
       imgSrc: "/第三页4.jpg"
@@ -219,10 +414,10 @@ const CraftHorizontalScroll = () => {
           THE CRAFT
         </span>
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#1c1c1e] font-black leading-[1.1] tracking-tight">
-          Mud and Fire:<br className="md:hidden" /> The Birth of a Totem
+          The Craft:<br className="md:hidden" /> How a Wamao is Made
         </h2>
         <p className="mt-8 text-xl md:text-2xl font-sans font-light text-[#c05621] max-w-2xl leading-relaxed italic">
-          "A pair of rough hands, a lump of leftover clay, and the beginning of a spiritual defense."
+          The making of a traditional Wamao, as documented in the kilns of Heqing, follows four stages.
         </p>
       </div>
 
@@ -263,3 +458,54 @@ const CraftHorizontalScroll = () => {
   );
 }
 
+/* ─────────────── Full craft-stage text (Prose columns) ─────────────── */
+
+const CraftDetail = () => {
+  return (
+    <section className="w-full bg-[#F0EFEC] py-24 md:py-32">
+      <Prose>
+        <p>
+          <strong className="font-semibold text-[#B84221]">Gathering the Earth.</strong>{" "}
+          Artisans use locally sourced red or black clay, the same material used for
+          bricks and roof tiles. In Beibanbang village, the clay comes from a deposit
+          called Nangongyu, covering over a thousand acres between the village and its
+          neighbor. The best clay is low in sand, slightly white, and highly plastic.
+          It costs 60 to 80 yuan per cartload. One master artisan, Gao Jinfu, a
+          nationally recognized ICH inheritor, uses roughly 30 tons per year (Ma Jia,
+          2018).
+        </p>
+        <p>
+          <strong className="font-semibold text-[#B84221]">Shaping the Body.</strong>{" "}
+          In Heqing, the Wamao is entirely hand-molded without molds. In Binchuan,
+          artisans use a different method: carving the figure from a solid clay block.
+          Either way, the body is left hollow, which serves both an acoustic and a
+          symbolic function: elder craftsmen say that when wind passes through, the
+          Wamao produces a low moaning sound (Ma Jia, 2018). The hollow body also
+          carries the meaning of &ldquo;swallowing iron and excreting gold,&rdquo; a
+          prosperity metaphor that persists in the commercial versions made today. A
+          skilled artisan can finish one in about an hour; a husband-and-wife team may
+          turn out 17 to 20 in a day.
+        </p>
+        <p>
+          <strong className="font-semibold text-[#B84221]">Awakening the Face.</strong>{" "}
+          The face is the hardest part. Using fingers and a few simple tools (a cutting
+          bow, a small knife, a bamboo tube), the artisan sculpts bulging eyes, flared
+          nostrils, and the defining feature: the wide-open mouth. Five or six fangs are
+          individually attached. Ears are scored with fine lines. Ma Jia (2018) calls
+          this step &ldquo;the most demanding test of the maker&rsquo;s skill and the
+          key moment of the Wamao&rsquo;s formation.&rdquo;
+        </p>
+        <p>
+          <strong className="font-semibold text-[#B84221]">Trial by Fire.</strong>{" "}
+          Traditional Wamao are fired in dome-shaped coal kilns known locally as
+          &ldquo;black-tile kilns,&rdquo; at temperatures between 1,000 and 1,400
+          degrees Celsius. A full cycle runs 17 to 18 days: one or two days loading,
+          seven or eight days burning, six or seven days cooling with water poured over
+          the kiln, and another day or two to unload. The figures come out unglazed.
+          Their color (ideally a blue-grey, &ldquo;neither black nor red,&rdquo; as kiln
+          masters describe it) depends entirely on temperature control (Ma Jia, 2018).
+        </p>
+      </Prose>
+    </section>
+  );
+};

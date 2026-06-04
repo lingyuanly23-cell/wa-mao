@@ -34,25 +34,51 @@ export default function HeroSection() {
               [ ACT I ]
             </span>
             <h1
-              className="font-serif font-black tracking-tight mix-blend-multiply text-[#1C1A17] mb-6"
+              className="font-serif font-black tracking-tight mix-blend-multiply text-[#1C1A17] mb-8"
               style={{ fontSize: "clamp(3.5rem, 8vw, 7rem)" }}
             >
               THE INQUIRY
             </h1>
-            <p className="text-2xl font-sans font-light text-[#4A4A4A] mb-8 max-w-xl">
-              How a heritage product appeared in a city that never had one.
-            </p>
             <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] max-w-xl space-y-6">
               <p>
-                I grew up in Yuxi, Yunnan. I never saw a Wamao in any house, any
-                temple, or any rooftop. Then, around 2020, it appeared — on Douyin
-                livestreams tagged &ldquo;Intangible Cultural Heritage,&rdquo; in blind-box
-                collections on Xiaohongshu, on government banners along newly built
-                cultural streets.
+                I grew up in Yuxi, Yunnan. In eighteen years, I never saw a Wamao
+                in any house, any temple, or any rooftop. Then, around 2020, it
+                appeared: on Douyin livestreams tagged &ldquo;Intangible Cultural
+                Heritage,&rdquo; in blind-box collections on Xiaohongshu, on
+                government banners along a newly built cultural street called
+                Qinghua Jie.
               </p>
               <p>
-                A creature I had never encountered was suddenly everywhere, claiming
-                to be ancient.
+                A creature I had never encountered was suddenly everywhere,
+                claiming to be ancient.
+              </p>
+              <p>
+                That puzzled me, because the Wamao is not a homegrown product of
+                Yuxi. Across Yunnan, roof-guardian figures have deep and genuine
+                roots: in Heqing, where Bai-ethnic potters have crafted them for
+                generations as part of a house-building ritual called &ldquo;sealing
+                the dragon&rsquo;s mouth&rdquo; (Ma Jia, 2018); in Binchuan, where
+                Han-Chinese settlers brought them along pilgrimage routes to Jizu
+                Mountain (Ma Jia, 2022a). But Yuxi had none of that. The artisans I
+                later interviewed had no family lineage in Wamao-making. The
+                workshops I visited had all pivoted to Wamao production after 2013,
+                when local government launched a cultural tourism campaign. My
+                grandmother remembers seeing Wamao figures on rooftops when she was
+                young: people kept them for luck, rubbed them before mahjong games,
+                occasionally placed one facing a wealthier neighbor&rsquo;s house to
+                &ldquo;draw their fortune over.&rdquo; But as she put it, this was a
+                minor folk habit tied to old courtyard houses, not something anyone
+                would have called a community tradition.
+              </p>
+              <p>
+                So I spent seven days in June 2025 embedded in two Yuxi workshops,
+                talking to four people who make or sell Wamao for a living, and
+                learning to shape clay alongside them. I also scraped 200
+                Xiaohongshu posts and classified their content to see what happens
+                to this object once it enters the consumer internet. And I read
+                through the academic literature (the ethnographies, the
+                art-historical analyses, the policy documents) to understand what
+                scholars already know and where the gaps are.
               </p>
             </div>
           </div>

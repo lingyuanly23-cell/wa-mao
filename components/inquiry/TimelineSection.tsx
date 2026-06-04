@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import TimelineNode from "./TimelineNode";
+import Prose from "../../components/editorial/Prose";
+import PullQuote from "../../components/editorial/PullQuote";
+import PivotChart from "../../components/editorial/PivotChart";
 
 function TimelinePhoto({ src, alt }: { src: string; alt: string }) {
   return (
@@ -12,60 +14,11 @@ function TimelinePhoto({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function FeaturedQuote() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    el.style.opacity = "0";
-    el.style.transform = "scale(0.98)";
-    el.style.transition = "opacity 800ms ease-out, transform 800ms ease-out";
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.style.opacity = "1";
-            el.style.transform = "scale(1)";
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="relative py-16 md:py-24 my-12 md:my-20">
-      {/* Decorative quote mark */}
-      <span
-        className="absolute -top-4 left-1/2 -translate-x-1/2 md:left-[15%] md:translate-x-0 text-8xl font-serif text-[#ff9f43]/20 select-none pointer-events-none leading-none"
-        aria-hidden="true"
-      >
-        &ldquo;
-      </span>
-
-      <blockquote className="text-3xl md:text-5xl font-serif font-light italic text-[#1C1A17] text-center leading-snug max-w-5xl mx-auto px-6">
-        Wamao was never anything to begin with. As long as you keep the giant
-        open mouth, you can do whatever you want.
-      </blockquote>
-      <p className="text-center text-lg text-[#4A4A4A] mt-6 font-sans">
-        — Li Ping
-      </p>
-    </div>
-  );
-}
-
 export default function TimelineSection() {
   const headerRef = useScrollReveal<HTMLDivElement>({ staggerDelay: 120 });
 
   return (
-    <section className="relative w-full bg-[#F0EFEC] py-40 overflow-hidden">
+    <section className="relative w-full bg-[#F0EFEC] py-40 overflow-x-clip">
       {/* Section header */}
       <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-32 text-center">
         <span
@@ -81,11 +34,14 @@ export default function TimelineSection() {
           Seven Days in Yuxi
         </h2>
         <p
-          className="text-xl font-sans font-light text-[#4A4A4A] max-w-2xl mx-auto"
+          className="text-xl font-sans font-light text-[#4A4A4A] max-w-3xl mx-auto"
           data-reveal
         >
-          June 16–22, 2025. Two workshops, three artisans, and a question that
-          got harder to answer.
+          This section is a narrative account of my fieldwork rather than a set of
+          raw field notes: it draws on the notes I took each day in Yuxi, together
+          with relevant scholarship, to present what I observed in context.
+          Quotations are translated from Chinese and reflect the substance of what
+          was said, not verbatim transcripts.
         </p>
       </div>
 
@@ -95,7 +51,7 @@ export default function TimelineSection() {
         <div className="absolute top-0 bottom-0 left-4 md:left-1/2 md:-translate-x-1/2 border-l-2 border-dashed border-[#ff9f43]/60 z-0" />
 
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
-          {/* Node 1: The Street */}
+          {/* June 16 — Qinghua Street */}
           <TimelineNode
             date="June 16"
             imagePosition="left"
@@ -103,32 +59,74 @@ export default function TimelineSection() {
               <TimelinePhoto src="/inquiry-workshop.jpg" alt="Interior of Yuqing Kiln workshop" />
             }
             textContent={
-              <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] space-y-6">
-                <p>
-                  Qinghua Street was built to save the local economy after
-                  Yuxi&apos;s tobacco industry declined. Red brick, calligraphy
-                  banners, &ldquo;Intangible Heritage&rdquo; everywhere.
-                </p>
-                <p>
-                  Inside Yuqing Kiln: brick walls, a half-height kiln, two
-                  worktables, two people shaping clay. By the door, a shelf of
-                  Wamao fridge magnets — crudely made.
-                </p>
-                <p>
-                  The bestseller was a green figure with a coin in its mouth. If
-                  the coin is inside, the back is sealed — to prevent wealth from
-                  leaking. If there is no coin, the hole stays open — to draw
-                  wealth in.
-                </p>
-                <p>
-                  The logic had nothing to do with heritage. It was engineered for
-                  luck.
-                </p>
+              <div>
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1C1A17] mb-6">
+                  Qinghua Street
+                </h3>
+                <Prose>
+                  <p>
+                    Qinghua Street was purpose-built. Yuxi is a tobacco city, the
+                    home of the Hongta Group, one of China&rsquo;s largest cigarette
+                    makers. According to figures published by the Yuxi Municipal
+                    Bureau of Statistics in July 2024, tobacco still accounts for 60
+                    to 70 percent of the city&rsquo;s above-scale industrial output.
+                    Its taxes once funded virtually everything. But in 1994, the
+                    State Council&rsquo;s tax-sharing reform redirected tobacco
+                    excise revenue to the central government, and by 2001 the Hongta
+                    Group&rsquo;s annual tax contribution had fallen from over 20
+                    billion yuan to roughly 12.7 billion, a drop of more than 30
+                    percent (MBA Library; Sohu News, citing contemporary financial
+                    reporting). The city needed something else. In January 2013,
+                    Yuxi&rsquo;s party secretary Zhang Zulin stood up at the
+                    provincial People&rsquo;s Congress and declared that the city
+                    would &ldquo;vigorously develop the modern service sector, led
+                    by tourism&rdquo; (Yuxi Municipal Government, &ldquo;2013 Year in
+                    Review&rdquo;). That same year, the municipal government released
+                    its Cultural Tourism Strategy and the Kun-Yu-Hong
+                    Tourism-Culture Industry Belt Action Plan (Yuxi Municipal
+                    Government, 2014), and a local kiln successfully refired
+                    blue-and-white porcelain (a technical achievement, it turns out,
+                    that had already been accomplished privately by a single artisan
+                    back in 1992). In 2014, Yuxi blue-and-white porcelain received
+                    provincial-level ICH status (Yunnan Gateway, 2020). In 2019, the
+                    city broke ground on a 4.5-billion-yuan ceramics art town
+                    (Yunnan Daily, 2024; Yuxi Municipal Government, 2024). Qinghua
+                    Street, which opened in October 2020, is its commercial
+                    centerpiece.
+                  </p>
+                  <p>
+                    The street is lined with red brick facades, calligraphy
+                    banners, and the words &ldquo;Intangible Heritage&rdquo; printed
+                    on every awning. It was originally pitched as a
+                    cultural-creative hub, then drifted into a food street, and has
+                    only recently swung back toward heritage branding. At the
+                    entrance to Yuqing Kiln, a shelf of Wamao fridge magnets greeted
+                    us by the door. Inside: two people shaping clay at long
+                    worktables in a brick-walled courtyard. At the back, a
+                    half-height kiln.
+                  </p>
+                  <p>
+                    Yang Ayi, a shop attendant, walked me through the product logic.
+                    Stick a miniature Wamao onto a ceramic cup, and the price goes
+                    from 60 to 140 yuan. The figures with coins sell best: the green
+                    ones, with a big open mouth. If the coin is inside, the back is
+                    sealed, so the wealth stays in. No coin means the back is left
+                    open, to pull fortune in from outside. I asked about the
+                    original meaning of the open mouth, the spirit-swallowing
+                    function documented in the ethnographic literature. She did not
+                    mention it. Nobody in the shop did.
+                  </p>
+                </Prose>
               </div>
             }
           />
+        </div>
 
-          {/* Node 2: The Woman Who Pivoted */}
+        {/* Pivot animation — tobacco → tourism economics (breaks out of timeline) */}
+        <PivotChart />
+
+        <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
+          {/* June 18 — The Woman Who Pivoted */}
           <TimelineNode
             date="June 18"
             imagePosition="right"
@@ -136,112 +134,194 @@ export default function TimelineSection() {
               <TimelinePhoto src="/inquiry-zheng.jpg" alt="Zheng Popo at her worktable" />
             }
             textContent={
-              <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] space-y-6">
-                <p>
-                  Zheng Popo and her husband, Liu Jialiang, are ceramicists — not
-                  Wamao artisans. He reverse-engineered Yuxi blue-and-white
-                  porcelain in 1992. She spent twenty years firing glazed roof
-                  tiles by his side. She never made Wamao.
-                </p>
-                <p>
-                  That changed in 2013, when the city launched a cultural
-                  industries campaign. A new agency connected workshops to trade
-                  fairs. She began producing Wamao — a product she never cared
-                  about — to keep the workshop alive.
-                </p>
-                <p>
-                  By 2017, the system changed. Awards and channels went to those
-                  who paid or had connections.
-                </p>
-
-                {/* Pull quote */}
-                <blockquote className="border-l-4 border-[#c05621] pl-6 italic text-[#c05621] text-xl md:text-2xl my-8">
-                  <p>&ldquo;Real craftspeople get nothing.&rdquo;</p>
-                  <p className="text-base not-italic mt-2">— Zheng Popo</p>
-                </blockquote>
-
-                <p>
-                  Their workshop sits on the ruins of the old Yuxi Kiln — the
-                  factory Liu once directed. He moved here on purpose.
-                </p>
-                <p>
-                  &ldquo;The root of Yuxi ceramics is here. You can&apos;t surrender this
-                  land to food vendors.&rdquo;
-                </p>
-                <p>
-                  He was financially secure. He didn&apos;t need to be here. He stayed,
-                  petitioning the Bureau to waive rent for young artisans. They
-                  declined.
-                </p>
+              <div>
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1C1A17] mb-6">
+                  The Woman Who Pivoted
+                </h3>
+                <Prose>
+                  <p>
+                    Zheng Popo is not a Wamao artisan. She is a ceramicist who spent
+                    twenty years making glazed roof tiles alongside her husband, Liu
+                    Jialiang. Between 2002 and 2013, their main business was tiles
+                    and building materials. She had never made a Wamao in her life.
+                  </p>
+                  <p>
+                    That changed when the city&rsquo;s cultural-industries push
+                    began. Around 2013, a government agency called the Hongta
+                    District Cultural Industries Office started connecting workshops
+                    to trade fairs and providing promotional channels. Zheng Popo
+                    saw an opportunity: Wamao were cheap to make, easy to transport,
+                    and increasingly in demand at the fairs. She started producing
+                    them, not out of any attachment to the tradition but to keep the
+                    workshop running.
+                  </p>
+                  <p>
+                    Today her operation has a clear division of labor: she molds the
+                    clay bodies in bulk, her daughter-in-law paints them, and her
+                    son handles the finishing and firing. They produce for
+                    wholesale: 200 to 300 pieces at a time, costing 50 to 200 yuan
+                    per unit, retailing at roughly double in tourist areas. Walk-in
+                    local sales barely exist. In the two days I spent sitting in the
+                    shop, almost no one from Yuxi came through the door. The visitors
+                    were tourists from out of town, browsing, occasionally picking
+                    something up and putting it back.
+                  </p>
+                  <p>
+                    Around 2017, the Cultural Industries Office was folded into the
+                    Municipal Bureau of Culture and Tourism. Zheng Popo&rsquo;s
+                    account of what changed is sharp: she says the new bureau turned
+                    cultural support into a transaction, that awards and market
+                    access now go to people with money or connections rather than
+                    skilled craftspeople. I have no way to independently verify that
+                    claim, and she has known tensions with other workshops in the
+                    area, so I present it as what it is: one artisan&rsquo;s
+                    experience of a felt shift in how the system works. But the
+                    bitterness in her voice was real, and it came up more than once.
+                  </p>
+                </Prose>
               </div>
             }
           />
 
-          {/* Node 3: It Was Never Anything */}
+          {/* June 20 — The Kiln Guardian */}
           <TimelineNode
             date="June 20"
             imagePosition="left"
             imageSlot={
-              <TimelinePhoto src="/inquiry-liping.jpg" alt="Li Ping loading the kiln" />
+              <TimelinePhoto src="/第三页1.jpg" alt="The kiln at Liu Jialiang's workshop" />
             }
             textContent={
-              <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] space-y-4">
-                <p>
-                  Li Ping&apos;s studio was the largest Wamao brand in Yuxi. She
-                  chose Wamao in 2013 because &ldquo;it was cute to make, and nobody
-                  else was doing it.&rdquo;
-                </p>
+              <div>
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1C1A17] mb-6">
+                  The Kiln Guardian
+                </h3>
+                <Prose>
+                  <p>
+                    Liu Jialiang, Zheng Popo&rsquo;s husband, did not want to talk
+                    about Wamao. He wanted to talk about the kiln.
+                  </p>
+                  <p>
+                    He is a man whose life runs on ceramic infrastructure. He
+                    started learning to make pottery and mix glazes as a teenager,
+                    rose to become technical deputy director of the Yuxi Municipal
+                    Kiln Factory, and in 1992, when the Yuxi Dragon Kiln
+                    archaeological excavation turned up shards of blue-and-white
+                    porcelain, he was the one who figured out how to reproduce the
+                    technique. No formula survived; he developed his own glaze
+                    composition and firing process from scratch. This was two
+                    decades before the city government officially announced the
+                    &ldquo;revival&rdquo; of Yuxi blue-and-white porcelain as part
+                    of its 2013 cultural-tourism push. The revival had already
+                    happened, quietly, in one man&rsquo;s workshop.
+                  </p>
+                  <p>
+                    In 1993, frustrated by what he called cronyism in the state-run
+                    kiln system, Liu left and started his own business. The Yuxi
+                    Municipal Kiln Factory was eventually taken over and repurposed.
+                    Its former site, on a road still called Ancient Kiln Road, is
+                    where Liu chose to set up his current workshop. He moved there on
+                    purpose. &ldquo;The root of Yuxi ceramics is here,&rdquo; he told
+                    me. &ldquo;You can&rsquo;t surrender this land to food
+                    vendors.&rdquo;
+                  </p>
+                  <p>
+                    He does not make Wamao. Blue-and-white porcelain, glaze
+                    chemistry, kiln construction: those are his domains. The workshop
+                    started producing Wamao only around 2020, because customers kept
+                    asking for them. For Liu, they are a side product, not a calling.
+                    His energy goes into the infrastructure: he has lobbied the
+                    Bureau of Culture and Tourism to waive rent for young artisans
+                    who might set up workshops in the area. They turned him down.
+                  </p>
+                  <p>
+                    There is an irony here that Liu himself does not dwell on but
+                    that the project cannot ignore: the man who literally re-created
+                    Yuxi&rsquo;s ceramic heritage from archaeological fragments now
+                    occupies a workshop where the bestselling item is a product he
+                    considers peripheral, and that product is the one the city calls
+                    its &ldquo;intangible cultural heritage.&rdquo;
+                  </p>
+                </Prose>
+              </div>
+            }
+          />
+
+          {/* June 21 — It Was Never Anything */}
+          <TimelineNode
+            date="June 21"
+            imagePosition="right"
+            imageSlot={
+              <TimelinePhoto src="/inquiry-liping.jpg" alt="Li Ping at her studio" />
+            }
+            textContent={
+              <div>
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1C1A17] mb-6">
+                  It Was Never Anything
+                </h3>
+                <Prose>
+                  <p>
+                    Li Ping&rsquo;s studio, Wamao Daren, occupies a residential
+                    building about ten minutes from the city center. She and her
+                    husband Wang Ziqiang studied ceramics together at university. In
+                    2013, still students, they picked the Wamao as their direction,
+                    &ldquo;because it was cute to make, and nobody else was doing
+                    it.&rdquo; After graduating in 2015, they launched the studio.
+                    Today it is the largest Wamao brand in Yuxi.
+                  </p>
+                  <p>
+                    Li Ping is the most clear-eyed person I met about the nature of
+                    what she sells. &ldquo;Wamao was never anything to begin
+                    with,&rdquo; she told me. &ldquo;As long as you keep the giant
+                    open mouth, you can do whatever you want with it.&rdquo; She said
+                    this not as a confession but as a design principle. The absence
+                    of a fixed form is, for her, creative freedom.
+                  </p>
+                </Prose>
               </div>
             }
           />
         </div>
 
-        {/* Li Ping's quote — breaks out of timeline, full width */}
-        <FeaturedQuote />
+        {/* Li Ping pull quote — breaks out of timeline, full width */}
+        <PullQuote quote="Wamao was never anything to begin with." />
 
-        {/* Post-quote continuation, tighter spacing */}
+        {/* June 21 continuation */}
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
           <div className="md:ml-[50%] pl-8 md:pl-16 -mt-8 md:-mt-16">
-            <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] space-y-4 max-w-lg">
+            <Prose>
               <p>
-                Her real frustration was storytelling. After a decade, her brand
-                remained mid-tier because Wamao had no transmissible myth.
+                Her real frustration is not about authenticity but about marketing.
+                After ten years, the brand is still mid-tier. The problem, she
+                believes, is that the Wamao lacks a story. &ldquo;If only it were
+                like the Broken Bridge and the White Snake Lady,&rdquo; she said,
+                naming the Hangzhou legend that turns a place into a destination.
+                &ldquo;We don&rsquo;t have anything like that. We don&rsquo;t have a
+                story that sticks.&rdquo;
               </p>
               <p>
-                When it first went viral, merchants without stock substituted
-                stone lions from Fujian. They sold just as well.
+                She used a word that stayed with me: &ldquo;laundering.&rdquo; She
+                borrowed it from a case study of a funeral home that had been
+                redesigned to look like a luxury boutique, &ldquo;the kind of place
+                you&rsquo;d actually want to walk into.&rdquo; What the Wamao needs,
+                she said, is something similar: a reframing that makes people accept
+                its presence in their daily lives, &ldquo;giving it a meaning that
+                goes beyond what it physically is.&rdquo;
               </p>
-              <p>Tourists do not care about origins.</p>
-            </div>
+              <p>
+                I asked about the time the Wamao first went viral. Merchants who had
+                no stock, she told me, filled orders with stone lions shipped in
+                from Fujian province. The lions sold just fine. &ldquo;Tourists
+                don&rsquo;t care about origins,&rdquo; she said. &ldquo;They
+                don&rsquo;t care what&rsquo;s inside.&rdquo;
+              </p>
+              <p>
+                In a market where a Fujian lion can stand in for a Yunnan cat and
+                nobody notices the difference, the question of what the Wamao
+                &ldquo;really is&rdquo; starts to matter less than the question of
+                who gets to decide what it means, and who profits from the answer.
+              </p>
+            </Prose>
           </div>
-
-          {/* Node 4: What I Learned */}
-          <TimelineNode
-            date="June 22"
-            imagePosition="right"
-            imageSlot={
-              <TimelinePhoto src="/inquiry-wamao.jpg" alt="Handmade Wamao figure" />
-            }
-            textContent={
-              <div className="font-serif text-xl leading-relaxed text-[#4A4A4A] space-y-6">
-                <p>
-                  I arrived with a thesis already formed: Wamao is an invented
-                  tradition. Seven days confirmed it.
-                </p>
-                <p>
-                  But what I did not expect was this: the invention is not the
-                  story. Zheng Popo made Wamao to survive. Liu Jialiang does not
-                  care about Wamao — he cares about the kiln beneath his feet. Li
-                  Ping openly admits she sells something fabricated.
-                </p>
-                <p>
-                  None of them are deceiving anyone. They are navigating a system
-                  in which &ldquo;heritage&rdquo; is an economic instrument, and their
-                  livelihoods depend on performing it.
-                </p>
-              </div>
-            }
-          />
         </div>
       </div>
     </section>
