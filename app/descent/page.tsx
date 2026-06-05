@@ -142,8 +142,8 @@ const FiveTheories = () => {
       className="relative w-full border-y border-[#1C1A17]/10 bg-[#F0EFEC] px-6 py-28 md:py-40"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <span className="font-sans text-xs font-semibold uppercase tracking-[0.26em] text-[#B84221]">
-          What it might have been
+        <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+          [ What it might have been ]
         </span>
         <h2 className="mt-6 max-w-4xl font-reading text-[clamp(1.9rem,4.4vw,3.2rem)] font-semibold leading-[1.12] text-[#1C1A17]">
           Scholars have proposed at least five different theories about what the
@@ -158,23 +158,23 @@ const FiveTheories = () => {
                 i === 0 ? "border-t" : ""
               } border-b border-[#1C1A17]/12`}
             >
-              <span className="font-reading text-[clamp(2.4rem,7vw,4.5rem)] font-bold leading-none text-[#B84221]">
+              <span className="font-reading text-[clamp(2.4rem,6vw,4rem)] font-semibold leading-none text-[#B84221]/35 tabular-nums">
                 {t.num}
               </span>
-              <p className="font-reading text-[clamp(1.2rem,2.6vw,1.9rem)] font-medium leading-[1.4] text-[#1C1A17] [text-wrap:pretty]">
+              <p className="font-reading text-[1.2rem] md:text-[1.3rem] font-medium leading-[1.55] text-[#1C1A17] [text-wrap:pretty]">
                 {t.text}
               </p>
             </li>
           ))}
         </ol>
 
-        <p className="mt-16 max-w-3xl font-reading text-[clamp(1.1rem,2.2vw,1.45rem)] leading-[1.7] text-[#2A2723] [text-wrap:pretty]">
+        <p className="mt-16 max-w-3xl font-reading text-[0.975rem] md:text-[1.05rem] leading-[1.65] text-[#2A2723] [text-wrap:pretty]">
           There is no consensus, and the name &ldquo;Wamao&rdquo; itself turns out
           to be a regional label from central Yunnan that scholars adopted as a
           province-wide term, not a universal folk name (Ma Jia, 2022).
         </p>
 
-        <p className="mt-10 max-w-3xl font-reading text-[clamp(1.25rem,2.8vw,1.85rem)] font-semibold leading-[1.45] text-[#1C1A17]">
+        <p className="mt-10 max-w-3xl font-reading text-[1.2rem] md:text-[1.35rem] font-medium leading-[1.5] text-[#1C1A17]">
           What is clear is that the Wamao&rsquo;s history cannot be separated from
           the history of migration and kiln culture in Yunnan.
         </p>
@@ -267,8 +267,8 @@ const HistoryScrollTransition = () => {
 
       {/* Section header — editorial kicker + headline, matching the rest of the act */}
       <div className="w-full max-w-6xl mx-auto px-6 mb-24 md:mb-32 relative z-10">
-        <span className="font-sans text-xs font-semibold uppercase tracking-[0.26em] text-[#B84221]">
-          Migration &amp; kiln culture
+        <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+          [ Migration &amp; kiln culture ]
         </span>
         <h2 className="mt-6 font-reading text-[clamp(1.9rem,4.4vw,3.2rem)] font-semibold leading-[1.12] text-[#1C1A17]">
           1381 — The Great Expedition
@@ -303,10 +303,10 @@ const HistoryScrollTransition = () => {
                   <div className="hidden md:block absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F7F6F4] border-4 border-[#B84221] rounded-full shadow-[0_0_10px_rgba(184,66,33,0.5)] z-20" />
 
                   <div className="flex flex-col max-w-lg">
-                    <h3 className="text-[#1C1A17] font-serif text-2xl md:text-3xl font-semibold mb-6 leading-tight">
+                    <h3 className="text-[#1C1A17] font-serif text-2xl md:text-3xl font-bold mb-6 leading-tight">
                       {data.title}
                     </h3>
-                    <p className="text-[#2A2723] font-serif text-lg md:text-xl leading-relaxed">
+                    <p className="text-[#2A2723] font-reading text-[0.975rem] md:text-[1.05rem] leading-[1.65]">
                       {data.desc}
                     </p>
                   </div>
@@ -394,7 +394,7 @@ const CraftHorizontalScroll = () => {
         <span className="text-[#B84221] font-sans text-xs font-bold tracking-[0.2em] uppercase mb-6">
           [ THE CRAFT ]
         </span>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#1C1A17] font-black leading-[1.1] tracking-tight">
+        <h2 className="font-reading text-[clamp(1.9rem,4.4vw,3.2rem)] font-semibold text-[#1C1A17] leading-[1.12]">
           The Craft:<br className="md:hidden" /> How a Wamao is Made
         </h2>
         <p className="mt-6 font-reading text-[1.05rem] md:text-[1.15rem] text-[#2A2723] max-w-2xl leading-[1.7]">
@@ -422,13 +422,13 @@ const CraftHorizontalScroll = () => {
 
             {/* Right Column: Text Content */}
             <div className="w-full md:w-1/2 flex flex-col items-start justify-center z-10 md:pl-12">
-              <span className="text-[#B84221] font-sans font-bold text-xl tracking-widest mb-4">
+              <span className="text-[#B84221] font-sans font-bold text-xs uppercase tracking-[0.2em] mb-4">
                 STEP {step.num}
               </span>
-              <h3 className="text-4xl md:text-5xl font-serif text-[#1C1A17] mb-6 font-black leading-tight">
+              <h3 className="text-2xl md:text-3xl font-serif text-[#1C1A17] mb-6 font-bold leading-tight">
                 {step.title}
               </h3>
-              <p className="text-lg md:text-xl font-serif text-[#2A2723] leading-relaxed max-w-xl">
+              <p className="text-[0.975rem] md:text-[1.05rem] font-reading text-[#2A2723] leading-[1.65] max-w-xl">
                 {step.desc}
               </p>
             </div>
