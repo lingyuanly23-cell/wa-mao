@@ -10,6 +10,7 @@ import GreatFlattening from "../../components/editorial/GreatFlattening";
 import Prose from "../../components/editorial/Prose";
 import PullQuote from "../../components/editorial/PullQuote";
 import ChapterBridge from "../../components/editorial/ChapterBridge";
+import AnimatedExhibit from "../../components/editorial/AnimatedExhibit";
 
 /* ------------------------------------------------------------------ */
 /*  Section heading — small terracotta rule + reading-serif title.     */
@@ -146,9 +147,9 @@ export default function AfterlifePage() {
   return (
     <main className="bg-[#F0EFEC] pb-40">
       {/* ── Opener ── */}
-      <section className="mx-auto flex min-h-[78vh] max-w-3xl flex-col justify-center px-6 pt-32 pb-12">
-        <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-[#B84221]">
-          Act III · The Digital Afterlife
+      <section className="mx-auto flex min-h-[48vh] max-w-3xl flex-col justify-center px-6 pt-36 pb-10">
+        <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+          [ ACT III · THE DIGITAL AFTERLIFE ]
         </p>
         <h1 className="mt-5 font-reading text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[1.06] text-[#1C1A17]">
           What Happens When a Cultural Object Enters the Consumer Internet
@@ -184,7 +185,12 @@ export default function AfterlifePage() {
       </Prose>
 
       {/* the approved living chart: 200-post breakdown + donut */}
-      <DataDotGrid />
+      <AnimatedExhibit
+        title="200 posts, sorted"
+        description="Scroll: every dot is one Xiaohongshu post tagged 瓦猫, sorting itself into six kinds of attention — and then into the 80 / 20 split."
+      >
+        <DataDotGrid />
+      </AnimatedExhibit>
 
       <Prose>
         <p>
@@ -199,7 +205,12 @@ export default function AfterlifePage() {
       <SectionHeading>What Disappears Online</SectionHeading>
 
       {/* the approved animation: five regional forms collapse into one image */}
-      <GreatFlattening />
+      <AnimatedExhibit
+        title="Five forms become one"
+        description="Scroll: the five regional varieties of the Wamao collapse into the single small, cute, big-mouthed image the platform rewards."
+      >
+        <GreatFlattening />
+      </AnimatedExhibit>
 
       <Prose>
         <p>

@@ -11,11 +11,13 @@
   --color-wamao-red: #ff6b6b;
   --color-wamao-blue: #4ecdc4;
   --color-wamao-orange: #ff9f43;
-  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Arial Rounded MT Bold", sans-serif;
-  --font-serif: "Noto Serif SC", STZhongsong, "Source Han Serif SC", "Microsoft YaHei", serif;
-  /* English-first reading serif; Noto Serif SC only renders the CJK glyphs */
+  /* One sans, one serif site-wide. Source Serif 4 renders Latin; Noto Serif SC
+     only fills in the CJK glyphs (e.g. 瓦猫). This keeps every serif identical. */
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Source Serif 4", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
   --font-reading: "Source Serif 4", "Noto Serif SC", Georgia, "Times New Roman", serif;
-  --font-handwriting: "Comic Sans MS", "Chalkboard SE", "Comic Neue", "Marker Felt", cursive, sans-serif;
+  /* "handwriting" is retired — neutralised to the clean sans (no Comic Sans). */
+  --font-handwriting: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
 }
 
 body {

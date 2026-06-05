@@ -16,8 +16,6 @@ export default function TimelineNode({
   date,
   imageSlot,
   textContent,
-  imagePosition = "left",
-  fullWidth = false,
 }: TimelineNodeProps) {
   const nodeRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
@@ -42,9 +40,9 @@ export default function TimelineNode({
             if (dotRef.current) {
               dotRef.current.animate(
                 [
-                  { transform: "translate(-50%, -50%) scale(1)", boxShadow: "0 0 10px rgba(255,159,67,0.5)" },
-                  { transform: "translate(-50%, -50%) scale(1.3)", boxShadow: "0 0 20px rgba(255,159,67,0.8)" },
-                  { transform: "translate(-50%, -50%) scale(1)", boxShadow: "0 0 10px rgba(255,159,67,0.5)" },
+                  { transform: "translate(-50%, -50%) scale(1)", boxShadow: "0 0 10px rgba(184,66,33,0.5)" },
+                  { transform: "translate(-50%, -50%) scale(1.3)", boxShadow: "0 0 20px rgba(184,66,33,0.8)" },
+                  { transform: "translate(-50%, -50%) scale(1)", boxShadow: "0 0 10px rgba(184,66,33,0.5)" },
                 ],
                 { duration: 600, easing: "ease-out" }
               );
@@ -61,70 +59,18 @@ export default function TimelineNode({
     return () => observer.disconnect();
   }, []);
 
-  if (fullWidth) {
-    return (
-      <div ref={nodeRef} className="relative w-full">
-        {/* Timeline dot */}
-        <div
-          ref={dotRef}
-          className="hidden md:block absolute left-1/2 top-8 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20"
-        />
-
-        {/* Mobile dot */}
-        <div className="md:hidden absolute left-0 top-8 -translate-x-1/2 w-4 h-4 bg-white border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20" />
-
-        <div className="md:ml-[55%] pl-8 md:pl-16">
-          <span className="font-handwriting text-3xl md:text-5xl text-[#ff9f43] block mb-6">
-            {date}
-          </span>
-          <div className="max-w-lg">{textContent}</div>
-        </div>
-      </div>
-    );
-  }
-
-  const imageBlock = imageSlot && (
-    <div className="w-full flex justify-end md:pr-16">
-      {imageSlot}
-    </div>
-  );
-
-  const textBlock = (
-    <div className="w-full flex justify-start md:pl-16 relative">
-      {/* Desktop timeline dot */}
+  return (
+    <div ref={nodeRef} className="relative w-full pl-12 md:pl-20">
+      {/* Dot sitting on the left spine */}
       <div
         ref={dotRef}
-        className="hidden md:block absolute left-0 top-8 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20"
+        className="absolute left-4 md:left-8 top-2 -translate-x-1/2 w-4 h-4 bg-white border-4 border-[#B84221] rounded-full shadow-[0_0_10px_rgba(184,66,33,0.4)] z-20"
       />
-
-      <div className="flex flex-col max-w-lg">
-        <span className="font-handwriting text-3xl md:text-5xl text-[#ff9f43] mb-6">
-          {date}
-        </span>
-        {textContent}
-      </div>
-    </div>
-  );
-
-  return (
-    <div
-      ref={nodeRef}
-      className="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 w-full items-start"
-    >
-      {/* Mobile dot */}
-      <div className="md:hidden absolute left-0 top-0 -translate-x-1/2 w-4 h-4 bg-white border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20" />
-
-      {imagePosition === "left" ? (
-        <>
-          {imageBlock}
-          {textBlock}
-        </>
-      ) : (
-        <>
-          {textBlock}
-          {imageBlock}
-        </>
-      )}
+      <span className="font-sans text-base md:text-lg font-bold uppercase tracking-[0.18em] text-[#B84221] block mb-5">
+        {date}
+      </span>
+      {imageSlot && <div className="mb-8 w-full max-w-md">{imageSlot}</div>}
+      <div className="w-full max-w-2xl">{textContent}</div>
     </div>
   );
 }

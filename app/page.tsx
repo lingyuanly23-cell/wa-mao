@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Prose from "../components/editorial/Prose";
 import HomeTwoReadings from "../components/editorial/HomeTwoReadings";
 import ChapterBridge from "../components/editorial/ChapterBridge";
+import AnimatedExhibit from "../components/editorial/AnimatedExhibit";
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
@@ -102,7 +103,7 @@ export default function Home() {
         </div>
 
         {/* Main Grid Container */}
-        <div className="relative z-10 mx-auto w-full max-w-[90rem] flex-1 flex flex-col justify-center px-6 py-20 lg:grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-8 items-center">
+        <div className="relative z-10 mx-auto w-full max-w-[80rem] flex-1 flex flex-col justify-center px-8 md:px-12 py-20 lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-10 items-center">
 
           {/* Left Column: Typography Storytelling */}
           <div className="flex flex-col items-start justify-center w-full lg:pr-8 xl:pr-24">
@@ -120,15 +121,16 @@ export default function Home() {
               WA MAO
             </h1>
 
-            <div className="relative w-full max-w-xl">
+            <div className="relative w-full max-w-2xl">
               <p
                 ref={subtitleRef}
-                className="font-reading text-[clamp(1.05rem,1.6vw,1.25rem)] text-[#2A2723] leading-[1.75] [text-wrap:pretty]"
+                className="font-reading text-[clamp(0.95rem,1.3vw,1.1rem)] text-[#2A2723] leading-[1.65] [text-wrap:pretty]"
               >
-                The Wamao (literally &ldquo;tile cat&rdquo;) is a clay guardian figure placed on the
+                The Wamao (瓦猫, literally &ldquo;tile cat&rdquo;) is a clay guardian figure placed on the
                 rooftops of traditional houses across Yunnan, southwestern China. Across the province
-                it goes by different names, for example &ldquo;ridge-taming tiger&rdquo; in Heqing,
-                &ldquo;clay cat&rdquo; in Binchuan, &ldquo;unicorn&rdquo; in Jianchuan (Ma Jia, 2022).
+                it goes by different names, for example &ldquo;ridge-taming tiger&rdquo; (降脊虎) in
+                Heqing, &ldquo;clay cat&rdquo; (土猫) in Binchuan, &ldquo;unicorn&rdquo; in Jianchuan
+                (Ma Jia, 2022).
                 The word &ldquo;Wamao&rdquo; itself is a central-Yunnan term that academics later
                 adopted as a province-wide label for these mythical-beast figures; it is not a name all
                 the makers themselves use (Ma Jia, 2022). This project traces how that label, and the
@@ -139,7 +141,7 @@ export default function Home() {
               {/* Hand-drawn underline accent */}
               <svg
                 ref={accentRef}
-                className="absolute -bottom-8 left-0 w-64 h-6 text-[#c05621] opacity-60"
+                className="absolute -bottom-8 left-0 w-64 h-6 text-[#B84221] opacity-50"
                 viewBox="0 0 200 15"
                 fill="none"
                 preserveAspectRatio="none"
@@ -157,7 +159,7 @@ export default function Home() {
           </div>
 
           {/* Right Column: Visual Subject */}
-          <div className="flex justify-center w-full mt-16 lg:mt-0 xl:-ml-12 relative z-10">
+          <div className="flex justify-center w-full mt-16 lg:mt-0 relative z-10">
             <div
               ref={imageContainerRef}
               className="relative w-full max-w-sm xl:max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-black/10 bg-[#E6E4DF] border border-black/5"
@@ -173,15 +175,7 @@ export default function Home() {
 
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 lg:left-16 flex flex-col items-center gap-4 z-20">
-          <span className="text-[0.65rem] uppercase tracking-[0.2em] font-sans font-medium text-black/40" style={{ writingMode: 'vertical-lr' }}>
-            Scroll to discover
-          </span>
-          <div className="w-[1px] h-16 bg-black/10 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[#1C1A17] scroll-line-anim origin-top" />
-          </div>
-        </div>    </section>
+      </section>
 
 
       {/* Project Archive Section */}
@@ -194,7 +188,7 @@ export default function Home() {
               [ PROJECT ARCHIVE ]
             </span>
             <h2 className="text-[clamp(3rem,6vw,5.5rem)] leading-[0.95] tracking-tight font-serif text-[#1C1A17] mix-blend-multiply font-bold mb-12">
-              A digital ethnography of clay, fire, and memory.
+              A digital archive of clay, fire, and memory.
             </h2>
 
             <Prose dropcap>
@@ -224,7 +218,7 @@ export default function Home() {
             <Link href="/inquiry" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left flex justify-between items-center w-full">
                 <div className="w-full">
-                  <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
+                  <span className="font-serif font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
                     ACT I: The Inquiry
                   </span>
                   <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
@@ -237,7 +231,7 @@ export default function Home() {
             {/* Act II */}
             <Link href="/descent" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left">
-                <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
+                <span className="font-serif font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
                   ACT II: Historical Background
                 </span>
                 <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
@@ -249,7 +243,7 @@ export default function Home() {
             {/* Act III */}
             <Link href="/afterlife" className="group cursor-pointer border-b border-black/10 py-8 relative w-full block">
               <div className="transform transition-all duration-300 ease-out group-hover:translate-x-3 origin-left">
-                <span className="font-sans font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
+                <span className="font-serif font-bold text-2xl text-[#1C1A17] group-hover:text-[#B84221] transition-colors duration-300 block">
                   ACT III: The Digital Afterlife
                 </span>
                 <p className="text-base font-sans text-[#5b5751] mt-2 font-light group-hover:text-[#2A2723] transition-colors duration-300">
@@ -351,9 +345,12 @@ export default function Home() {
         </Prose>
 
         {/* The approved scroll animation: same object, two readings */}
-        <div className="my-12">
+        <AnimatedExhibit
+          title="The same object, two readings"
+          description="Scroll slowly: the figure never moves — only the meaning written around it changes, from a ward against evil to a charm for wealth."
+        >
           <HomeTwoReadings />
-        </div>
+        </AnimatedExhibit>
 
         {/* Remaining TODAY paragraphs (Yuxi no ritual; green coin bestseller; ICH 2023 vs 2014) */}
         <Prose>

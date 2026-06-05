@@ -6,16 +6,16 @@ export default function AboutPage() {
       <div className="mx-auto max-w-[44rem] px-6 py-24 md:py-32">
         {/* ── About the Researcher ── */}
         <section>
-          <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#B84221]">
-            About the Researcher
+          <p className="mb-5 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+            [ About the Researcher ]
           </p>
           <h1 className="mb-8 font-reading text-4xl font-semibold leading-tight text-[#1C1A17] md:text-5xl">
             Li Houjun
           </h1>
-          <p className="font-reading text-[1.2rem] leading-[1.85] text-[#2A2723] [text-wrap:pretty] md:text-[1.3rem]">
+          <p className="font-reading text-[1rem] leading-[1.7] text-[#2A2723] [text-wrap:pretty] md:text-[1.05rem]">
             I am an independent researcher interested in the intersection of sociology, history, and digital culture. This project grew out of a personal puzzle (why a city I grew up in was suddenly full of clay creatures I had never seen before) and turned into a broader inquiry into how cultural objects get made, marketed, and consumed in contemporary China.
           </p>
-          <p className="mt-7 font-reading text-[1.15rem] leading-[1.85] text-[#1C1A17]">
+          <p className="mt-7 font-reading text-[1.05rem] leading-[1.7] text-[#1C1A17]">
             Contact:{" "}
             <a
               href="mailto:s24037.li@stu.scie.com.cn"
@@ -30,8 +30,8 @@ export default function AboutPage() {
 
         {/* ── Fieldwork & Gratitude ── */}
         <section>
-          <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#B84221]">
-            Fieldwork &amp; Gratitude
+          <p className="mb-5 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+            [ Fieldwork &amp; Gratitude ]
           </p>
           <h2 className="font-reading text-2xl font-medium leading-snug text-[#1C1A17] md:text-3xl">
             Yuqing Kiln Workshop
@@ -39,7 +39,7 @@ export default function AboutPage() {
           <h2 className="mt-1 mb-7 font-reading text-2xl font-medium leading-snug text-[#1C1A17] md:text-3xl">
             Wamao Daren Studio
           </h2>
-          <p className="font-reading text-[1.2rem] leading-[1.85] text-[#2A2723] [text-wrap:pretty] md:text-[1.3rem]">
+          <p className="font-reading text-[1rem] leading-[1.7] text-[#2A2723] [text-wrap:pretty] md:text-[1.05rem]">
             Thank you for opening your doors, sharing your work, and letting me sit with you while you shaped clay and talked about what it means.
           </p>
         </section>
@@ -48,10 +48,10 @@ export default function AboutPage() {
 
         {/* ── Methodology Note ── */}
         <section>
-          <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#B84221]">
-            Methodology Note
+          <p className="mb-5 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+            [ Methodology Note ]
           </p>
-          <div className="space-y-7 font-reading text-[1.15rem] leading-[1.85] text-[#2A2723] [text-wrap:pretty] md:text-[1.2rem]">
+          <div className="space-y-6 font-reading text-[1rem] leading-[1.7] text-[#2A2723] [text-wrap:pretty] md:text-[1.05rem]">
             <p>
               This project&apos;s fieldwork was conducted over seven days (June 16–22, 2025) in Yuxi, Yunnan, involving semi-structured interviews with four workshop personnel across two sites, supplemented by participant observation as an apprentice. The digital component analyzed 200 Xiaohongshu posts collected via keyword-based web scraping, with AI-assisted content classification. All interview quotations are drawn from field notes and reflect the substance of what was said, not verbatim transcripts. The literature review covers eleven studies published between 2002 and 2025.
             </p>
@@ -65,8 +65,8 @@ export default function AboutPage() {
 
         {/* ── References ── */}
         <section>
-          <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#B84221]">
-            References
+          <p className="mb-6 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+            [ References ]
           </p>
           <ul className="space-y-4 font-reading text-[0.98rem] leading-[1.7] text-[#3A3631]">
             <li>
@@ -116,7 +116,7 @@ export default function AboutPage() {
       <ChapterBridge
         eyebrow="[ RETURN ]"
         title="Introduction"
-        description="A digital ethnography of clay, fire, and memory."
+        description="A digital archive of clay, fire, and memory."
         href="/"
       />
     </main>

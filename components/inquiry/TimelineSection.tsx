@@ -5,6 +5,7 @@ import TimelineNode from "./TimelineNode";
 import Prose from "../../components/editorial/Prose";
 import PullQuote from "../../components/editorial/PullQuote";
 import PivotChart from "../../components/editorial/PivotChart";
+import AnimatedExhibit from "../../components/editorial/AnimatedExhibit";
 
 function TimelinePhoto({ src, alt }: { src: string; alt: string }) {
   return (
@@ -34,23 +35,22 @@ export default function TimelineSection() {
           Seven Days in Yuxi
         </h2>
         <p
-          className="text-xl font-sans font-light text-[#4A4A4A] max-w-3xl mx-auto"
+          className="font-reading text-[1rem] md:text-[1.05rem] leading-[1.65] text-[#4A4A4A] max-w-3xl mx-auto"
           data-reveal
         >
           This section is a narrative account of my fieldwork rather than a set of
           raw field notes: it draws on the notes I took each day in Yuxi, together
           with relevant scholarship, to present what I observed in context.
           Quotations are translated from Chinese and reflect the substance of what
-          was said, not verbatim transcripts.
+          was said.
         </p>
       </div>
 
       {/* Timeline container */}
-      <div className="relative w-full max-w-6xl mx-auto px-6 pl-8 md:pl-6">
-        {/* Center dashed line — desktop: center, mobile: left edge */}
-        <div className="absolute top-0 bottom-0 left-4 md:left-1/2 md:-translate-x-1/2 border-l-2 border-dashed border-[#ff9f43]/60 z-0" />
-
-        <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
+      <div className="relative w-full max-w-5xl mx-auto px-6">
+        <div className="flex flex-col w-full gap-24 md:gap-32 relative z-10">
+          {/* Left spine */}
+          <div className="absolute top-0 bottom-0 left-4 md:left-8 border-l-2 border-dashed border-[#B84221]/40 z-0" />
           {/* June 16 — Qinghua Street */}
           <TimelineNode
             date="June 16"
@@ -123,7 +123,12 @@ export default function TimelineSection() {
         </div>
 
         {/* Pivot animation — tobacco → tourism economics (breaks out of timeline) */}
-        <PivotChart />
+        <AnimatedExhibit
+          title="How a heritage industry got funded"
+          description="Scroll through three charts: tobacco's grip on Yuxi, the tax collapse that gutted that revenue, and the tourism build-out the city turned to next."
+        >
+          <PivotChart />
+        </AnimatedExhibit>
 
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
           {/* June 18 — The Woman Who Pivoted */}
@@ -285,9 +290,9 @@ export default function TimelineSection() {
         {/* Li Ping pull quote — breaks out of timeline, full width */}
         <PullQuote quote="Wamao was never anything to begin with." />
 
-        {/* June 21 continuation */}
+        {/* June 21 continuation — normal reading column, not shifted to the right half */}
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10">
-          <div className="md:ml-[50%] pl-8 md:pl-16 -mt-8 md:-mt-16">
+          <div>
             <Prose>
               <p>
                 Her real frustration is not about authenticity but about marketing.

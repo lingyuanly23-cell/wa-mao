@@ -15,7 +15,6 @@ export default function DescentPage() {
       <ActOpener />
       <FiveTheories />
       <HistoryScrollTransition />
-      <Migration1381 />
       <CraftHorizontalScroll />
       <CraftDetail />
       <ChapterBridge
@@ -31,9 +30,9 @@ export default function DescentPage() {
 
 const ActOpener = () => {
   return (
-    <section className="mx-auto flex min-h-[64vh] max-w-3xl flex-col justify-center px-6 pt-24 pb-12">
-      <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-[#B84221]">
-        Act II · Historical Background
+    <section className="mx-auto flex min-h-[52vh] max-w-3xl flex-col justify-center px-6 pt-24 pb-12">
+      <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#B84221]">
+        [ ACT II · LITERATURE REVIEW &amp; HISTORY ]
       </p>
       <h1 className="mt-5 font-reading text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[1.05] text-[#1C1A17]">
         A past more complicated<br className="hidden md:block" /> than the label.
@@ -44,6 +43,18 @@ const ActOpener = () => {
             The Wamao&rsquo;s past is more complicated than the &ldquo;600-year-old
             heritage&rdquo; label suggests, and less settled than any single origin
             story would have you believe.
+          </p>
+          <p>
+            Where Act I documented the fieldwork, this Act turns to the scholarship: a
+            review of what scholars have found about the deep history, regional
+            diversity, and ritual life of the Wamao across Yunnan, drawing on a
+            literature review of eleven studies published between 2002 and 2025.
+          </p>
+          <p>
+            This project does not attempt a comprehensive survey of Yunnan&rsquo;s
+            Wamao traditions; that work has been accomplished by scholars including
+            Ma Jia (2018, 2022), Lu Jun &amp; Sirivesmas (2025), Cao Anli &amp; Xin
+            Beini (2025), and Wang Xinyuan (2024).
           </p>
         </Prose>
       </div>
@@ -231,22 +242,22 @@ const HistoryScrollTransition = () => {
   const narrativeData = [
     {
       title: "1381 • The Great Expedition",
-      desc: "In 1381, the Ming Dynasty sent 300,000 troops into the southwestern frontier under General Fu Youde.",
+      desc: "In 1381, the Ming Dynasty sent 300,000 troops into the southwestern frontier under General Fu Youde. Soldiers were settled as military colonists (军屯), given land to farm, and expected to hold the border permanently.",
       imgSrc: "/第二页4.png"
     },
     {
-      title: "Soldiers Settled as Military Colonists",
-      desc: "Soldiers were settled as military colonists, given land to farm, and expected to hold the border permanently.",
+      title: "Beibanbang • Founded 1382",
+      desc: "In the Heqing region, ethnographic fieldwork has confirmed that the village of Beibanbang, one of the best-documented centers of Wamao production, was founded by Han Chinese military settlers who arrived in 1382 under General Lan Yu (Ma Jia, 2018). These settlers built courtyard houses modeled on Central Plains architecture, and they brought the practice of placing guardian figures on roof ridges.",
       imgSrc: "/第二页3.png"
     },
     {
-      title: "Beibanbang • Founded 1382",
-      desc: "In the Heqing region, ethnographic fieldwork has confirmed that the village of Beibanbang, one of the best-documented centers of Wamao production, was founded by Han Chinese military settlers who arrived in 1382 under General Lan Yu (Ma Jia, 2018).",
+      title: "Kilns for Brick, Kilns for Wamao",
+      desc: "The kilns these colonists built to fire bricks for their new homes also fired the earliest Wamao prototypes. The ethnographer Ma Jia has argued that Wamao production is structurally tied to the brick-and-tile industry: “Where there are no brick kilns, there are no Wamao” (Ma Jia, 2018).",
       imgSrc: "/第二页2.png"
     },
     {
-      title: "Courtyard Houses • Roof-Ridge Guardians",
-      desc: "These settlers built courtyard houses modeled on Central Plains architecture, and they brought the practice of placing guardian figures on roof ridges.",
+      title: "Side Products of the Kiln",
+      desc: "The figures were not made by specialist craftsmen. They were side products, shaped from leftover clay by kiln workers as favors for neighbors who were building new houses. In the village of Beibanbang, an elderly worker recalled that in the old days, “if you were friends with someone, you’d make one for them during your spare time at the kiln, and fire it alongside the regular batch of tiles” (Ma Jia, 2018).",
       imgSrc: "/第二页1.png"
     }
   ];
@@ -254,16 +265,21 @@ const HistoryScrollTransition = () => {
   return (
     <section ref={containerRef} className="relative w-full bg-white flex flex-col items-center py-40 overflow-hidden">
 
-      {/* 卷轴引言 (Optional header to keep spacing) */}
-      <h2 className="text-4xl font-serif text-[#4b5563] text-center z-10 mb-32 px-6 relative">
-        1381 — The Great Expedition
-      </h2>
+      {/* Section header — editorial kicker + headline, matching the rest of the act */}
+      <div className="w-full max-w-6xl mx-auto px-6 mb-24 md:mb-32 relative z-10">
+        <span className="font-sans text-xs font-semibold uppercase tracking-[0.26em] text-[#B84221]">
+          Migration &amp; kiln culture
+        </span>
+        <h2 className="mt-6 font-reading text-[clamp(1.9rem,4.4vw,3.2rem)] font-semibold leading-[1.12] text-[#1C1A17]">
+          1381 — The Great Expedition
+        </h2>
+      </div>
 
       {/* 核心容器：长卷轴时间线 */}
       <div className="relative w-full max-w-6xl mx-auto px-6">
 
-        {/* 中央的绝对定位橙色虚线 */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-[#ff9f43] opacity-60 z-0" />
+        {/* 中央的绝对定位陶红虚线 */}
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-[#B84221] opacity-50 z-0" />
 
         {/* 历史节点列表 */}
         <div className="flex flex-col w-full gap-32 md:gap-48 relative z-10 pb-32">
@@ -284,13 +300,13 @@ const HistoryScrollTransition = () => {
                 {/* 右侧：文本内容 */}
                 <div className="w-full flex justify-start md:pl-16 relative">
                   {/* 中央的时间线节点（小锚点）- Hidden on mobile, absolutely positioned to align with the center line */}
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F7F6F4] border-4 border-[#ff9f43] rounded-full shadow-[0_0_10px_rgba(255,159,67,0.5)] z-20" />
+                  <div className="hidden md:block absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#F7F6F4] border-4 border-[#B84221] rounded-full shadow-[0_0_10px_rgba(184,66,33,0.5)] z-20" />
 
                   <div className="flex flex-col max-w-lg">
-                    <h3 className="text-[#ff9f43] font-handwriting text-3xl md:text-5xl mb-6 leading-tight">
+                    <h3 className="text-[#1C1A17] font-serif text-2xl md:text-3xl font-semibold mb-6 leading-tight">
                       {data.title}
                     </h3>
-                    <p className="text-[#4b5563] font-serif text-lg md:text-xl leading-relaxed">
+                    <p className="text-[#2A2723] font-serif text-lg md:text-xl leading-relaxed">
                       {data.desc}
                     </p>
                   </div>
@@ -304,41 +320,6 @@ const HistoryScrollTransition = () => {
     </section>
   );
 }
-
-/* ───────────────── 1381 expository text (Prose columns) ───────────────── */
-
-const Migration1381 = () => {
-  return (
-    <section className="w-full bg-[#F7F6F4] py-24 md:py-32">
-      <Prose>
-        <p>
-          In 1381, the Ming Dynasty sent 300,000 troops into the southwestern
-          frontier under General Fu Youde. Soldiers were settled as military
-          colonists, given land to farm, and expected to hold the border
-          permanently. In the Heqing region, ethnographic fieldwork has confirmed
-          that the village of Beibanbang, one of the best-documented centers of
-          Wamao production, was founded by Han Chinese military settlers who
-          arrived in 1382 under General Lan Yu (Ma Jia, 2018). These settlers built
-          courtyard houses modeled on Central Plains architecture, and they brought
-          the practice of placing guardian figures on roof ridges.
-        </p>
-        <p>
-          The kilns these colonists built to fire bricks for their new homes also
-          fired the earliest Wamao prototypes. The ethnographer Ma Jia has argued
-          that Wamao production is structurally tied to the brick-and-tile
-          industry: &ldquo;Where there are no brick kilns, there are no
-          Wamao&rdquo; (Ma Jia, 2018). The figures were not made by specialist
-          craftsmen. They were side products, shaped from leftover clay by kiln
-          workers as favors for neighbors who were building new houses. In the
-          village of Beibanbang, an elderly worker recalled that in the old days,
-          &ldquo;if you were friends with someone, you&rsquo;d make one for them
-          during your spare time at the kiln, and fire it alongside the regular
-          batch of tiles&rdquo; (Ma Jia, 2018).
-        </p>
-      </Prose>
-    </section>
-  );
-};
 
 /* ───────────────────── Craft horizontal scroll (kept) ───────────────────── */
 
@@ -410,13 +391,13 @@ const CraftHorizontalScroll = () => {
 
       {/* 全局章节标题区域 */}
       <div ref={titleRef} className="w-full max-w-4xl text-center flex flex-col items-center mb-24 md:mb-32 px-4 z-10 relative">
-        <span className="text-gray-400 font-sans text-sm tracking-[0.2em] uppercase mb-6 font-medium">
-          THE CRAFT
+        <span className="text-[#B84221] font-sans text-xs font-bold tracking-[0.2em] uppercase mb-6">
+          [ THE CRAFT ]
         </span>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#1c1c1e] font-black leading-[1.1] tracking-tight">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#1C1A17] font-black leading-[1.1] tracking-tight">
           The Craft:<br className="md:hidden" /> How a Wamao is Made
         </h2>
-        <p className="mt-8 text-xl md:text-2xl font-sans font-light text-[#c05621] max-w-2xl leading-relaxed italic">
+        <p className="mt-6 font-reading text-[1.05rem] md:text-[1.15rem] text-[#2A2723] max-w-2xl leading-[1.7]">
           The making of a traditional Wamao, as documented in the kilns of Heqing, follows four stages.
         </p>
       </div>
@@ -441,13 +422,13 @@ const CraftHorizontalScroll = () => {
 
             {/* Right Column: Text Content */}
             <div className="w-full md:w-1/2 flex flex-col items-start justify-center z-10 md:pl-12">
-              <span className="text-[#c05621] font-sans font-bold text-xl tracking-widest mb-4">
+              <span className="text-[#B84221] font-sans font-bold text-xl tracking-widest mb-4">
                 STEP {step.num}
               </span>
-              <h3 className="text-4xl md:text-5xl font-serif text-[#1c1c1e] mb-6 font-black leading-tight">
+              <h3 className="text-4xl md:text-5xl font-serif text-[#1C1A17] mb-6 font-black leading-tight">
                 {step.title}
               </h3>
-              <p className="text-lg md:text-xl font-serif text-gray-600 leading-relaxed max-w-xl">
+              <p className="text-lg md:text-xl font-serif text-[#2A2723] leading-relaxed max-w-xl">
                 {step.desc}
               </p>
             </div>

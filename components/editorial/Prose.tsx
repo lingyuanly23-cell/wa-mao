@@ -38,7 +38,7 @@ export default function Prose({
   return (
     <div
       ref={ref}
-      className={`mx-auto max-w-[36rem] space-y-7 px-6 font-reading text-[1.2rem] leading-[1.85] text-[#2A2723] [text-wrap:pretty] md:text-[1.3rem] ${
+      className={`mx-auto max-w-[44rem] space-y-4 px-6 font-reading text-[0.975rem] leading-[1.65] text-[#2A2723] [text-wrap:pretty] md:text-[1.05rem] ${
         dropcap ? "prose-dropcap" : ""
       }`}
     >

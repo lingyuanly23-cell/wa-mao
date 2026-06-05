@@ -10,7 +10,7 @@ export default function BridgeSection() {
     <section className="relative w-full bg-[#F7F6F4] py-32 overflow-hidden">
       <div ref={ref} className="max-w-2xl mx-auto px-6 text-center">
         <p
-          className="text-xl font-sans font-light text-[#4A4A4A] leading-relaxed mb-16"
+          className="font-reading text-[1.2rem] md:text-[1.35rem] font-medium text-[#2A2723] leading-[1.5] mb-16 [text-wrap:pretty]"
           data-reveal
         >
           If today&apos;s Wamao is a modern invention, what is the real history it

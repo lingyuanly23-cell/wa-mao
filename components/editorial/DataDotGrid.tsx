@@ -187,7 +187,7 @@ export default function DataDotGrid() {
   const colGap = VIEW_W / CATS.length;
 
   return (
-    <section ref={wrapRef} className="relative bg-[#F0EFEC]" style={{ height: "560vh" }}>
+    <section ref={wrapRef} className="relative bg-[#ECEAE5]" style={{ height: "560vh" }}>
       <div
         ref={stageRef}
         className="sticky top-0 flex h-screen flex-col overflow-hidden"

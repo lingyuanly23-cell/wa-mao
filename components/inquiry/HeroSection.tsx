@@ -23,10 +23,10 @@ export default function HeroSection() {
         2025
       </div>
 
-      <div className="max-w-[90rem] mx-auto px-6 w-full">
+      <div className="max-w-[80rem] mx-auto px-8 md:px-12 w-full">
         <div
           ref={revealRef}
-          className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center"
+          className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center"
         >
           {/* Left column — text */}
           <div className="flex flex-col justify-center" data-reveal>
@@ -39,7 +39,7 @@ export default function HeroSection() {
             >
               THE INQUIRY
             </h1>
-            <div className="text-xl font-sans font-light leading-relaxed text-[#4A4A4A] max-w-xl space-y-6">
+            <div className="font-reading text-[0.975rem] md:text-[1.05rem] leading-[1.65] text-[#2A2723] max-w-xl space-y-4">
               <p>
                 I grew up in Yuxi, Yunnan. In eighteen years, I never saw a Wamao
                 in any house, any temple, or any rooftop. Then, around 2020, it
